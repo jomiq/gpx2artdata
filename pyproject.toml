@@ -1,0 +1,61 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "gpx2artdata"
+dynamic = ["version"]
+description = 'Convert gpx file to excel for easy upload to artdatabanken.'
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+keywords = []
+authors = [
+  { name = "Jon Mihkkal Inga", email = "jon.mihkkal.inga@gmail.com" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = ["fastapi", "filetype", "gpxpy", "lxml", "openpyxl", "jinja2"]
+
+[project.urls]
+Documentation = "https://github.com/jomiq/gpx2artdata#readme"
+Issues = "https://github.com/jomiq/gpx2artdata/issues"
+Source = "https://github.com/jomiq/gpx2artdata"
+
+[tool.hatch.version]
+path = "src/gpx2artdata/__about__.py"
+
+[tool.hatch.envs.types]
+extra-dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/gpx2artdata tests}"
+
+[tool.coverage.run]
+source_pkgs = ["gpx2artdata", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/gpx2artdata/__about__.py",
+]
+
+[tool.coverage.paths]
+gpx2artdata = ["src/gpx2artdata", "*/gpx2artdata/src/gpx2artdata"]
+tests = ["tests", "*/gpx2artdata/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
