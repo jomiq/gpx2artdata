@@ -1,2 +1,2 @@
 #!/bin/sh
-fastapi run
+fastapi run --port 8080
