@@ -1,2 +1,2 @@
 #!/bin/sh
-fastapi run --port 8080
+python main.py
