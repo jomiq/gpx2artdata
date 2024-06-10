@@ -22,7 +22,8 @@
                 <input type="text" id="locale" name="locale" />
                 <h2>3. Noggrannhet (m)</h2>
                 <input type="number" id="accuracy" value="1" name="accuracy" />
-                <input type="submit" value="Start" />
+                <h2>4. Konvertera</h2>
+                <input type="submit" value="Kör!" />
             </form>
         </article>
         {% if error %} 
@@ -49,11 +50,14 @@
           </table>
         </article>
         {% endif %}
+        <article style="text-align: center;">
+          <h3>{{ n_files }} filer, {{ n_rows }} observationer</h3>
+        </article>
+      <footer style="text-align: right;">
+          <hr>
+          <small>&copy; elektroslöjd 2024</small>
+      </footer>
     </main>
-    <footer style="text-align: right;">
-        <hr>
-        <small>&copy; elektroslöjd 2024</small>
-    </footer>
     <script>
         function CopyToClipboard(id)
             {
@@ -66,6 +70,5 @@
                 document.getElementById('copy').innerHTML = "Kopierat!";
             }
 </script>
-    </script>
   </body>
 </html>

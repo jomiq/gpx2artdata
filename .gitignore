@@ -25,6 +25,9 @@ __pycache__
 .venv/
 build
 
+reset.txt
+rows.txt
+
 TODO
 
 .python-version
