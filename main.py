@@ -81,8 +81,7 @@ async def root(request: Request):
 async def post_convert(request: Request, file: UploadFile, locale: Annotated[str, Form()]="", accuracy: Annotated[int, Form()]=10):
     try:
         ctx = gpx2artdata.to_xlsx(file=file.file, title=file.filename, locale=locale, accuracy=accuracy)
-        n = len(ctx.get("rows")) - 1
-        add_rows(n)
+        add_rows(ctx["n_rows"])
     except Exception as e:
         ctx = {"error": str(e)}
 

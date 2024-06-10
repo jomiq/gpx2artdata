@@ -24,7 +24,7 @@ def to_xlsx(file: IO, locale="",  accuracy=10, title="result") -> str:
     wb = Workbook()
     ws = wb.active
     ws.append(COLMAP)
-    res = {"title": title, "headings": COLMAP, "rows": []}
+    res = {"title": title, "headings": COLMAP, "rows": [], "n_rows": len(gpx.waypoints)}
     for wp in gpx.waypoints:
         data = [
             wp.name,

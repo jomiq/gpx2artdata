@@ -40,7 +40,7 @@
         {% endif %}
         {% if rows %}
         <article>
-          <h2>{{ title }} | <button id="copy" onclick="CopyToClipboard('data')">Kopiera</button> | <a href="{{xlsx_url}}" download=""><button role="link" >Ladda ner .xlsx</button></a></h2>
+          <h2>{{ title }}: {{ n_rows }} observation{% if n_rows != 1 %}er{% endif %} | <button id="copy" onclick="CopyToClipboard('data')">Kopiera</button> | <a href="{{xlsx_url}}" download=""><button role="link" >Ladda ner .xlsx</button></a></h2>
             <table id="data">
             <tr>
               {% for heading in headings %}
