@@ -70,7 +70,7 @@ templates = Jinja2Templates(directory="templates")
 
 @app.get("/", response_class=HTMLResponse)
 async def root(request: Request):
-    return templates.TemplateResponse(request=request, name="index.html", context={"title": "gpx2artdata"})
+    return templates.TemplateResponse(request=request, name="index.html", context={"title": "gpx2artdata", "toast": bool("gpx.skolbacken.com" not in str(request.base_url))})
 
 
 @app.post("/", response_class=HTMLResponse)

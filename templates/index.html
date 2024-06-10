@@ -11,9 +11,15 @@
   <body>
     <main class="container">
     <main>
+      <section style="text-align: center;">
+        <h2>Ny address: <a href="https://gpx.skolbacken.com">gpx.skolbacken.com</a></h2>
+        <p>(sjukt mycket lättare att komma ihåg)</p>
+      </section>
+      {% endif %}
       <header>
           <h1 style="margin-top: 4rem;">Konvertera GPX-fil till ett format som bara artdata begriper</h1>
       </header>
+        {% if toast %}
         <article>
             <form action="/" method="POST" enctype="multipart/form-data">
                 <h2>1. Välj en GPX-fil</h2>
@@ -66,6 +72,7 @@
                 window.getSelection().removeAllRanges();
                 document.getElementById('copy').innerHTML = "Kopierat!";
             }
+
 </script>
   </body>
 </html>
