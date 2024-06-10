@@ -20,7 +20,6 @@
       <header>
           <h1 style="margin-top: 4rem;">Konvertera GPX-fil till ett format som bara artdata begriper</h1>
       </header>
-        {% if toast %}
         <article>
             <form action="/" method="POST" enctype="multipart/form-data">
                 <h2>1. Välj en GPX-fil</h2>
@@ -37,7 +36,8 @@
         <article>
             <h3>He gick int!!!</h3>
             <details>{{ error }}</details>
-        </article> {% endif %}
+        </article> 
+        {% endif %}
         {% if rows %}
         <article>
           <h2>{{ title }} | <button id="copy" onclick="CopyToClipboard('data')">Kopiera</button> | <a href="{{xlsx_url}}" download=""><button role="link" >Ladda ner .xlsx</button></a></h2>
