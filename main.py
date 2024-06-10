@@ -1,5 +1,4 @@
 import os 
-import shutil
 import gpx2artdata
 from typing import Annotated
 import fastapi
@@ -49,7 +48,7 @@ def reset_time() -> dt:
     try:
         with open(RESET_FILE, "r") as f:
             t = dt.fromisoformat(f.read())
-    except Exception as e:
+    except Exception as e: # noqa
         t = dt.now()
         with open(RESET_FILE, "w") as f:
             f.write(t.isoformat())
@@ -60,8 +59,8 @@ def reset_time() -> dt:
 def reset():
     with open(ROWS_FILE, "w") as f: 
         f.write("0")
-    shutil.rmtree(FILE_DIR, ignore_errors=True)
-    os.mkdir(FILE_DIR)
+    for file in os.listdir(FILE_DIR):
+        os.remove(f"{FILE_DIR}/{file}")
 
 
 app = fastapi.FastAPI()
