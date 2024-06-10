@@ -44,7 +44,7 @@ def add_rows(n: int) -> int:
     return N
 
 
-def reset_time() -> dt:
+def get_reset_time() -> dt:
     try:
         with open(RESET_FILE, "r") as f:
             t = dt.fromisoformat(f.read())
@@ -61,6 +61,10 @@ def reset():
         f.write("0")
     for file in os.listdir(FILE_DIR):
         os.remove(f"{FILE_DIR}/{file}")
+
+    t = dt.now()
+    with open(RESET_FILE, "w") as f:
+        f.write(t.isoformat())
 
 
 app = fastapi.FastAPI()
@@ -90,7 +94,7 @@ def days_hours_minutes(td: timedelta):
 
 @app.get("/info", response_class=HTMLResponse)
 async def get_info(request: Request):
-    t = reset_time()
+    t = get_reset_time()
     ut = dt.now() - t
     up_str = days_hours_minutes(ut)
     reset_t = f"{t.date().isoformat()} kl. {t.hour}:{t.minute:02}"
@@ -98,7 +102,7 @@ async def get_info(request: Request):
     return templates.TemplateResponse(request=request, name="info.html", context={"n_rows": row_count(), "n_files": file_count(), "reset_t": reset_t, "up_str": up_str})
 
 @app.get("/reset", response_class=RedirectResponse)
-async def post_reset():
+async def get_reset():
     reset()
     return "/info"
 

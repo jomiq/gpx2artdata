@@ -13,12 +13,12 @@
   </head>
   <body>
     <main class="container">
-      <header>
-        <h1 style="margin-top: 4rem">Info</h1>
+      <header style="text-align: center;">
+        <h1 style="margin-top: 4rem">{{ up_str }}</h1>
       </header>
       <article style="text-align: center">
         {% if n_files > 0 %}
-        <h3>{{ n_files }} filer, {{ n_rows }} observationer</h3>
+        <h3>{{ n_files }} fil{% if n_files > 1 %}er{% endif %}, {{ n_rows }} observation{% if n_rows > 1 %}er{% endif %}</h3>
         <form action="/reset" method="GET">
           <input type="submit" value="Rensa!" />
         </form>
@@ -26,11 +26,10 @@
         <h3>Tomt!</h3>
         {% endif %}
         <p><b>Reset</b> {{ reset_t }}</p>
-        <p><b>Uptime</b> {{ up_str }}</p>
       </article>
       <footer style="text-align: right">
         <hr />
-        <small>&copy; elektroslöjd 2024 | {% include "version.txt" %}</small>
+        <small>&copy; elektroslöjd 2024 | <a href="https://github.com/jomiq/gpx2artdata/commit/{% include 'version.txt' %}"> {% include "version.txt" %}</a></small>
       </footer>
     </main>
   </body>

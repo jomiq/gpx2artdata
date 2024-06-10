@@ -5,6 +5,7 @@
 from typing import IO
 import gpxpy
 from openpyxl import Workbook
+from datetime import datetime as dt
 
 COLMAP = [
     "Artnamn",
@@ -37,7 +38,7 @@ def to_xlsx(file: IO, locale="",  accuracy=10, title="result") -> str:
         ws.append(data)
         
     basename = title.split(".")[0]
-    output_name = f"static/converted/{basename}.xlsx"
+    output_name = f"static/converted/{basename}-{dt.now().isoformat()}.xlsx"
     wb.save(output_name)
     res["xlsx_url"] = output_name
 
