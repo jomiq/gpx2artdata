@@ -2,11 +2,59 @@
   <head>
     <title>gpx2artdata</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.green.min.css" />
+    {% if rows %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
+    <script src="{{ url_for('static', path='/dictionary.js') }}"></script>
+    {% endif %}
     <link
       rel="icon"
       href="{{ url_for('static', path='/favicon.png') }}"
       rel="stylesheet"
     />
+    <style>
+      .unselectable {
+        -moz-user-select: -moz-none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+      }
+
+      td.control {
+        background-color: transparent;
+        border: none;
+      }
+
+      tbody tr.disabled {
+        opacity: 50%;
+      }
+
+      tr td button {
+        opacity: 0%;
+      }
+
+      tbody tr:hover {
+        td {
+          background-color: var(--pico-background-contrast-color);
+          button {
+            opacity: 100%;
+          }
+        }
+      }
+
+      button.reset {
+        content: "R";
+      }
+      
+      button.toggle {
+        content: "T";
+      }
+
+      .danger {
+        border-left: 3px solid var(--pico-del-color);
+      }
+
+    </style>
   </head>
   <body>
     <main class="container">
@@ -39,41 +87,89 @@
         </article> 
         {% endif %}
         {% if rows %}
-        <article>
-          <h2>{{ title }}: {{ n_rows }} observation{% if n_rows != 1 %}er{% endif %} | <button id="copy" onclick="CopyToClipboard('data')">Kopiera</button> | <a href="{{xlsx_url}}" download=""><button role="link" >Ladda ner .xlsx</button></a></h2>
-            <table id="data">
-            <tr>
-              {% for heading in headings %}
-              <th>{{ heading }}</th>
-              {% endfor %}
-            </tr>
+        <article style="text-align: center;">
+          <h2>{{ title }}</h2> 
+          <hr />
+          <h3>{{ n_rows }} observation{% if n_rows != 1 %}er{% endif %}</h3>
+          <section><button class="btn" id="copy" data-clipboard-target="#data">Kopiera</button></section>
+          <table id="data">
+            <thead>
+              <tr>
+                <td class="unselectable control"></td>
+                {% for heading in headings %}
+                <td>{{ heading }}</td>
+                {% endfor %}
+                <td style="opacity: 0%;" class="unselectable control"><button></button></td>
+              </tr>
+            </thead>
+            <tbody>
             {% for row in rows %}
             <tr>
+              <td class="unselectable control"><button class="toggle"></button></td>
               {% for item in row %}
-              <td>{{ item }}</td>
+              <td {% if loop.first %} class="species"{% endif %} contenteditable="true">{{ item }}</td>
               {% endfor %}
             </tr>
             {% endfor %}
+            </tbody>
           </table>
-        </article>
         {% endif %}
       <footer style="text-align: right;">
           <hr>
           <small>&copy; elektroslöjd 2024 |  {% include "version.txt" %}</small>
       </footer>
     </main>
+    {% if rows %}
     <script>
-        function CopyToClipboard(id)
-            {
-                var r = document.createRange();
-                r.selectNode(document.getElementById(id));
-                window.getSelection().removeAllRanges();
-                window.getSelection().addRange(r);
-                document.execCommand('copy');
-                window.getSelection().removeAllRanges();
-                document.getElementById('copy').innerHTML = "Kopierat!";
-            }
+      let clipboard = new ClipboardJS(".btn");
+      let copy_button = document.querySelector("#copy")
+      clipboard.on('success', function(e) {
+        copy_button.innerHTML = "Kopierat!";
+        copy_button.classList.add("secondary")
+        e.clearSelection();
+      });
 
-</script>
+      clipboard.on('error', function(e) {
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+      });
+
+      let toggles = document.querySelectorAll('.toggle');
+
+      function reset_copy_button(){
+        copy_button.classList.remove("secondary");
+        copy_button.innerHTML = "Kopiera";
+      }
+
+      toggles.forEach(button => {
+        button.addEventListener('click', function(e) {
+          e.target.parentNode.parentNode.classList.toggle('disabled');
+          reset_copy_button();
+        });
+      });
+
+
+      let species = document.querySelectorAll(".species")
+
+      function check_species(el) {
+        if(dictionary.includes(el.innerHTML.toLowerCase())){
+          el.classList.remove("danger");
+        } else {
+          el.classList.add("danger");
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", (e) => {
+        species.forEach(el => {
+          check_species(el);
+          el.addEventListener("input", (e) => {
+            console.log(e)
+            check_species(e.target);
+            });
+        });
+      });
+
+    </script>
+    {% endif %}
   </body>
 </html>
