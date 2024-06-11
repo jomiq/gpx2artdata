@@ -19,7 +19,7 @@ COLMAP = [
 ]
 
 
-def to_xlsx(file: IO, locale="",  accuracy=10, title="result") -> str:
+def to_xlsx(file: IO, locale="", accuracy=10, title="result") -> str:
     gpx = gpxpy.parse(file)
     wb = Workbook()
     ws = wb.active
@@ -37,9 +37,11 @@ def to_xlsx(file: IO, locale="",  accuracy=10, title="result") -> str:
         ]
         res["rows"].append(data)
         ws.append(data)
-        
+
     basename = sanitize(title.split(".")[0])
-    output_name = f"static/converted/{basename}-{dt.now().isoformat(timespec='minutes')}.xlsx".replace(" ", "_")
+    output_name = f"static/converted/{basename}-{dt.now().isoformat(timespec='minutes')}.xlsx".replace(
+        " ", "_"
+    )
     wb.save(output_name)
     res["xlsx_url"] = output_name
 

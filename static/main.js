@@ -1,47 +1,46 @@
 let clipboard = new ClipboardJS(".btn");
-      let copy_button = document.querySelector("#copy")
-      clipboard.on('success', function(e) {
-        copy_button.innerHTML = "Kopierat!";
-        copy_button.classList.add("secondary")
-        e.clearSelection();
-      });
+let copy_button = document.querySelector("#copy");
+clipboard.on("success", function (e) {
+  copy_button.innerHTML = "Kopierat!";
+  copy_button.classList.add("secondary");
+  e.clearSelection();
+});
 
-      clipboard.on('error', function(e) {
-        console.error('Action:', e.action);
-        console.error('Trigger:', e.trigger);
-      });
+clipboard.on("error", function (e) {
+  console.error("Action:", e.action);
+  console.error("Trigger:", e.trigger);
+});
 
-      let toggles = document.querySelectorAll('.toggle');
+let toggles = document.querySelectorAll(".toggle");
 
-      function reset_copy_button(){
-        copy_button.classList.remove("secondary");
-        copy_button.innerHTML = "Kopiera";
-      }
+function reset_copy_button() {
+  copy_button.classList.remove("secondary");
+  copy_button.innerHTML = "Kopiera";
+}
 
-      toggles.forEach(button => {
-        button.addEventListener('click', function(e) {
-          e.target.parentNode.parentNode.classList.toggle('disabled');
-          reset_copy_button();
-        });
-      });
+toggles.forEach((button) => {
+  button.addEventListener("click", function (e) {
+    e.target.parentNode.parentNode.classList.toggle("disabled");
+    reset_copy_button();
+  });
+});
 
+let species = document.querySelectorAll(".species");
 
-      let species = document.querySelectorAll(".species")
+function check_species(el) {
+  if (dictionary.includes(el.innerHTML.toLowerCase())) {
+    el.classList.remove("danger");
+  } else {
+    el.classList.add("danger");
+  }
+}
 
-      function check_species(el) {
-        if(dictionary.includes(el.innerHTML.toLowerCase())){
-          el.classList.remove("danger");
-        } else {
-          el.classList.add("danger");
-        }
-      }
-
-      document.addEventListener("DOMContentLoaded", (e) => {
-        species.forEach(el => {
-          check_species(el);
-          el.addEventListener("input", (e) => {
-            console.log(e)
-            check_species(e.target);
-            });
-        });
-      });
+document.addEventListener("DOMContentLoaded", (e) => {
+  species.forEach((el) => {
+    check_species(el);
+    el.addEventListener("input", (e) => {
+      console.log(e);
+      check_species(e.target);
+    });
+  });
+});
