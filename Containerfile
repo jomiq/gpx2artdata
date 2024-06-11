@@ -11,7 +11,7 @@ COPY src src/
 COPY static static/
 COPY templates templates/
 COPY pyproject.toml main.py server.sh README.md ./
-RUN echo ${BUILD_VERSION} > templates/version.txt
+RUN echo ${BUILD_VERSION} > templates/githash.txt
 
 RUN pip install .
 
