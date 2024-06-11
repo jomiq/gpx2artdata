@@ -17,7 +17,7 @@ COLMAP = [
 
 
 def do_convert(
-    file: IO, locale: str = "", accuracy: float = 1.0, title: str = "result"
+    file: IO, locale: str = "", accuracy: int = 1, title: str = "result"
 ) -> dict:
     gpx = gpxpy.parse(file)
     res = {"title": title, "headings": COLMAP, "rows": [], "n_rows": len(gpx.waypoints)}

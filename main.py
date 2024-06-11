@@ -9,7 +9,7 @@ from fastapi.templating import Jinja2Templates
 import os
 
 STATIC = "static"
-if os.environ.get("GPX2ARTDATA_PROD"):
+if os.environ.get("GPX2ARTDATA_PROD", False):
     app = fastapi.FastAPI(docs_url=None, redoc_url=None)
 else:
     app = fastapi.FastAPI()
@@ -36,7 +36,7 @@ async def post_convert(
     request: Request,
     file: UploadFile,
     locale: Annotated[str, Form()] = "",
-    accuracy: Annotated[float, Form()] = 10,
+    accuracy: Annotated[int, Form()] = 1,
 ):
     try:
         ctx = gpx2artdata.do_convert(
@@ -52,4 +52,5 @@ async def post_convert(
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run(app, host="0.0.0.0", port=8080)
+    port = os.environ.get("PORT", "8080")
+    uvicorn.run(app, host="0.0.0.0", port=port, proxy_headers=True)
