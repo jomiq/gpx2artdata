@@ -2,53 +2,11 @@ import gpx2artdata
 from typing import Annotated
 import fastapi
 from fastapi import UploadFile, Request, Form
-from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-from datetime import datetime as dt, timedelta
 
 STATIC = "static"
-ROWS_FILE = "rows.txt"
-RESET_FILE = "reset.txt"
-
-
-def row_count():
-    n = 0
-    try:
-        with open(ROWS_FILE, "r") as f:
-            n = int(f.read())
-    except Exception as e:  # noqa
-        reset()
-    return n
-
-
-def add_rows(n: int) -> int:
-    N = row_count() + n
-    with open(ROWS_FILE, "w") as f:
-        f.write(str(N))
-
-    return N
-
-
-def get_reset_time() -> dt:
-    try:
-        with open(RESET_FILE, "r") as f:
-            t = dt.fromisoformat(f.read())
-    except Exception as e:  # noqa
-        t = dt.now()
-        with open(RESET_FILE, "w") as f:
-            f.write(t.isoformat())
-
-    return t
-
-
-def reset():
-    with open(ROWS_FILE, "w") as f:
-        f.write("0")
-    t = dt.now()
-    with open(RESET_FILE, "w") as f:
-        f.write(t.isoformat())
-
 
 app = fastapi.FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -63,6 +21,7 @@ async def root(request: Request):
         context={
             "title": "gpx2artdata",
             "toast": bool("gpx.skolbacken.com" not in str(request.base_url)),
+            "gpx_version": gpx2artdata.__version__,
         },
     )
 
@@ -72,45 +31,17 @@ async def post_convert(
     request: Request,
     file: UploadFile,
     locale: Annotated[str, Form()] = "",
-    accuracy: Annotated[int, Form()] = 10,
+    accuracy: Annotated[float, Form()] = 10,
 ):
     try:
         ctx = gpx2artdata.do_convert(
             file=file.file, title=file.filename, locale=locale, accuracy=accuracy
         )
-        add_rows(ctx["n_rows"])
     except Exception as e:
         ctx = {"error": str(e)}
 
+    ctx["gpx_version"] = gpx2artdata.__version__
     return templates.TemplateResponse(request=request, name="index.html", context=ctx)
-
-
-def days_hours_minutes(td: timedelta):
-    return f"{td.days} dagar, {td.seconds//3600:02} timmar, {(td.seconds//60)%60:02} minuter"
-
-
-@app.get("/info", response_class=HTMLResponse)
-async def get_info(request: Request):
-    t = get_reset_time()
-    ut = dt.now() - t
-    up_str = days_hours_minutes(ut)
-    reset_t = f"{t.date().isoformat()} kl. {t.hour}:{t.minute:02}"
-
-    return templates.TemplateResponse(
-        request=request,
-        name="info.html",
-        context={
-            "n_rows": row_count(),
-            "reset_t": reset_t,
-            "up_str": up_str,
-        },
-    )
-
-
-@app.get("/reset", response_class=RedirectResponse)
-async def get_reset():
-    reset()
-    return "/info"
 
 
 if __name__ == "__main__":
