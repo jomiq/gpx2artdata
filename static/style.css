@@ -36,7 +36,8 @@ button.toggle {
   content: "T";
 }
 
-.danger {
+.danger, 
+td:has(input:invalid) {
   border-left: 3px solid var(--pico-del-color);
 }
 
@@ -55,8 +56,21 @@ td input:not([type="checkbox"], [type="radio"]) {
 
 td input:not([type="checkbox"], [type="radio"]):focus {
   box-shadow: none;
+
 }
 
-.species {
-  min-width: 12rem;
+input.species {
+  min-width: 8rem;
+}
+
+input.locale {
+  width: 4rem;
+}
+
+input.accuracy {
+  width: 1rem;
+}
+
+input.date {
+  width: 8rem;
 }

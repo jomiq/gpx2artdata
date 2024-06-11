@@ -1,4 +1,3 @@
-import os
 import gpx2artdata
 from typing import Annotated
 import fastapi
@@ -9,22 +8,8 @@ from fastapi.templating import Jinja2Templates
 from datetime import datetime as dt, timedelta
 
 STATIC = "static"
-FILES = "converted"
-
-FILE_DIR = f"{STATIC}/{FILES}"
 ROWS_FILE = "rows.txt"
 RESET_FILE = "reset.txt"
-
-if not os.path.isdir(FILE_DIR):
-    os.mkdir(FILE_DIR)
-
-
-def file_count():
-    try:
-        return len([p for p in os.listdir(FILE_DIR) if p.endswith(".xlsx")])
-    except Exception as e:  # noqa
-        reset()
-    return 0
 
 
 def row_count():
@@ -60,9 +45,6 @@ def get_reset_time() -> dt:
 def reset():
     with open(ROWS_FILE, "w") as f:
         f.write("0")
-    for file in os.listdir(FILE_DIR):
-        os.remove(f"{FILE_DIR}/{file}")
-
     t = dt.now()
     with open(RESET_FILE, "w") as f:
         f.write(t.isoformat())
@@ -93,7 +75,7 @@ async def post_convert(
     accuracy: Annotated[int, Form()] = 10,
 ):
     try:
-        ctx = gpx2artdata.to_xlsx(
+        ctx = gpx2artdata.do_convert(
             file=file.file, title=file.filename, locale=locale, accuracy=accuracy
         )
         add_rows(ctx["n_rows"])
@@ -119,7 +101,6 @@ async def get_info(request: Request):
         name="info.html",
         context={
             "n_rows": row_count(),
-            "n_files": file_count(),
             "reset_t": reset_t,
             "up_str": up_str,
         },

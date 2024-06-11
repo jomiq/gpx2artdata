@@ -60,9 +60,13 @@
             {% for row in rows %}
             <tr>
               <td class="unselectable control"><button class="toggle"></button></td>
-              {% for item in row %}
-                <td><input value="{{ item }}" {% if loop.first %}class="species" list="species_list"{% endif %} /></td>
-              {% endfor %}
+              <td><input class="species" value="{{ row.species }}"  list="species_list" required /></td>
+              <td><input class="locale" value="{{ row.locale }}" required /></td>
+              <td><input class="accuracy" value="{{ row.accuracy }}" pattern="\d+(.\d+)?" required /> m</td>
+              <td><input class="lon" value="{{ row.lon }}" pattern="(\d+.\d+)" required /></td>
+              <td><input class="lat" value="{{ row.lat }}" pattern="(\d+.\d+)" required /></td>
+              <td><input class="date" type="date" pattern="\d{4}-\d{2}-\d{2}" value="{{ row.date }}" required /></td>
+              <td><input class="comment" value="{{ row.comment }}" /></td>  
             </tr>
             {% endfor %}
             </tbody>
