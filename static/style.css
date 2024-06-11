@@ -1,0 +1,58 @@
+.unselectable {
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+td.control {
+  background-color: transparent;
+  border: none;
+}
+
+tbody tr.disabled {
+  opacity: 50%;
+}
+
+tr td button {
+  opacity: 0%;
+}
+
+tbody tr:hover {
+  td {
+    background-color: var(--pico-background-contrast-color);
+    button {
+      opacity: 100%;
+    }
+  }
+}
+
+button.reset {
+  content: "R";
+}
+
+button.toggle {
+  content: "T";
+}
+
+.danger {
+  border-left: 3px solid var(--pico-del-color);
+}
+
+td input:not([type="checkbox"], [type="radio"]) {
+  border: none;
+  display: inline;
+  background-color: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0 0 0 0;
+  margin-bottom: auto !important;
+  margin-top: auto !important;
+  height: auto !important;
+  max-width: fit-content;
+}
+
+td input:not([type="checkbox"], [type="radio"]):focus {
+  box-shadow: none;
+}
