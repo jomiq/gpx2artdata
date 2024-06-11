@@ -6,9 +6,14 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
-STATIC = "static"
+import os
 
-app = fastapi.FastAPI()
+STATIC = "static"
+if os.environ.get("GPX2ARTDATA_PROD"):
+    app = fastapi.FastAPI(docs_url=None, redoc_url=None)
+else:
+    app = fastapi.FastAPI()
+
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 

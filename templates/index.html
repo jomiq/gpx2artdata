@@ -1,12 +1,12 @@
 <html>
   <head>
-    <title>gpx2artdata</title>
+    <title>{% if title %}{{ title }} - {% endif %}gpx2artdata</title>
     <link rel="icon" href="{{ url_for('static', path='/favicon.png') }}"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.green.min.css" />
     <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}" />
     {% if rows %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
     <script src="{{ url_for('static', path='/dictionary.js') }}"></script>
+    <script src="{{ url_for('static', path='/main.js') }}"></script>
     {% endif %}
   </head>
   <body>
@@ -72,16 +72,13 @@
             </tbody>
           </table>
         </article>
+        <datalist id="species_list">
+        </datalist>
         {% endif %}
       <footer style="text-align: right;">
           <hr>
-          <small>&copy; elektroslöjd 2024 |  {% include "version.txt" %}</small>
+          <small>&copy; elektroslöjd 2024 | v{{ gpx_version }} | <a href="https://github.com/jomiq/gpx2artdata"> {% include "githash.txt" %}</a></small>
       </footer>
     </main>
-    {% if rows %}
-    <datalist id="species_list">
-    </datalist>
-    <script src="{{ url_for('static', path='/main.js') }}"></script>
-    {% endif %}
   </body>
 </html>
