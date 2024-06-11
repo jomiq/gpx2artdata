@@ -26,6 +26,9 @@ classifiers = [
 ]
 dependencies = ["fastapi", "filetype", "gpxpy", "lxml", "openpyxl", "jinja2", "sanitize_filename"]
 
+[project.optional-dependencies]
+dev = ["ruff", "pytest", "pre-commit"]
+
 [project.urls]
 Documentation = "https://github.com/jomiq/gpx2artdata#readme"
 Issues = "https://github.com/jomiq/gpx2artdata/issues"
