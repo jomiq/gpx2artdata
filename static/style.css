@@ -56,3 +56,7 @@ td input:not([type="checkbox"], [type="radio"]) {
 td input:not([type="checkbox"], [type="radio"]):focus {
   box-shadow: none;
 }
+
+.species {
+  min-width: 12rem;
+}

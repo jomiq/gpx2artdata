@@ -45,7 +45,7 @@
           <h2>{{ title }}</h2> 
           <hr />
           <h3>{{ n_rows }} observation{% if n_rows != 1 %}er{% endif %}</h3>
-          <section><button class="btn" id="copy" data-clipboard-target="#data">Kopiera</button></section>
+          <section><button id="copy">Kopiera</button></section>
           <table id="data">
             <thead>
               <tr>
@@ -61,7 +61,7 @@
             <tr>
               <td class="unselectable control"><button class="toggle"></button></td>
               {% for item in row %}
-                <td><input value="{{ item }}" {% if loop.first %}list="species"{% endif %} /></td>
+                <td><input value="{{ item }}" {% if loop.first %}class="species" list="species_list"{% endif %} /></td>
               {% endfor %}
             </tr>
             {% endfor %}
@@ -75,6 +75,8 @@
       </footer>
     </main>
     {% if rows %}
+    <datalist id="species_list">
+    </datalist>
     <script src="{{ url_for('static', path='/main.js') }}"></script>
     {% endif %}
   </body>
