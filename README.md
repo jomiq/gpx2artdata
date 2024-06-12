@@ -75,6 +75,9 @@ Copy `artdata.env.example` to `artdata.env` and edit with your key for [Artdatab
 The `dictionary` is a list used for auto-suggesting taxon names and spell checking.
 Functions for fetching and filtering taxon data are in `scripts/species_list.py`.  
 
+### Versioning
+Use `scripts/bump-version.sh` to generate CHANGELOG.md and maintain semantic versioning info. 
+
 ## Test
 TODO.
 
