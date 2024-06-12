@@ -28,14 +28,6 @@ tbody tr:hover {
   }
 }
 
-button.reset {
-  content: "R";
-}
-
-button.toggle {
-  content: "T";
-}
-
 .danger, 
 td:has(input:invalid) {
   border-left: 3px solid var(--pico-del-color);
