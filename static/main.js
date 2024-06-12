@@ -73,15 +73,15 @@ function init_results() {
       let txt = get_table_text();
       navigator.clipboard.writeText(txt);
       copy_button.classList.add("secondary");
-      copy_button.innerHTML = "Kopierat!";
+      copy_button.innerHTML = 'Kopierat! <i class="fa fa-thumbs-o-up"></i>';
     });
   }
 
   function reset_copy_button() {
     copy_button.classList.remove("secondary");
-    copy_button.innerHTML = "Kopiera";
+    copy_button.innerHTML = 'Kopiera <i class="fa fa-copy"></i>';
   }
-  
+
   const all_inputs = document.querySelectorAll("#data input");
   all_inputs.forEach((el) => {
     el.addEventListener("input", (e) => {
