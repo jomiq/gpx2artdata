@@ -14,7 +14,8 @@ if os.environ.get("GPX2ARTDATA_PROD", False):
 else:
     app = fastapi.FastAPI()
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
+static_app = StaticFiles(directory="static")
+app.mount("/static", static_app, name="static")
 templates = Jinja2Templates(directory="templates")
 
 

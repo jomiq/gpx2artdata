@@ -2,8 +2,11 @@ FROM python:3.12-slim
 
 EXPOSE 8080
 
-ARG build_version="none"
-ENV BUILD_VERSION ${build_version}
+ARG git_hash="local build"
+ARG website_url=""
+
+ENV GIT_HASH ${git_hash}
+ENV WEBSITE_URL ${website_url}
 
 WORKDIR /app
 
@@ -11,7 +14,8 @@ COPY src src/
 COPY static static/
 COPY templates templates/
 COPY pyproject.toml main.py server.sh README.md ./
-RUN echo ${BUILD_VERSION} > templates/githash.txt
+RUN echo ${GIT_HASH} > templates/githash.txt && echo "git_hash: ${GIT_HASH}" 
+RUN ${WEBSITE_URL} && echo "${WEBSITE_URL}/static" > templates/static_url.txt 
 
 RUN pip install .[server]
 
