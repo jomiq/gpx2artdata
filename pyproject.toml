@@ -24,15 +24,32 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: CPython",
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
-dependencies = ["fastapi", "filetype", "gpxpy", "lxml", "jinja2", "sanitize_filename"]
+dependencies = ["gpxpy", "lxml"]
 
 [project.optional-dependencies]
-dev = ["ruff", "pytest", "pre-commit", "hatch"]
+server = ["fastapi", "gpxpy", "jinja2"]
+dev = ["gpx2artdata[server]", "ruff", "pytest", "pre-commit", "hatch", "git-changelog"]
 
 [project.urls]
 Documentation = "https://github.com/jomiq/gpx2artdata#readme"
 Issues = "https://github.com/jomiq/gpx2artdata/issues"
 Source = "https://github.com/jomiq/gpx2artdata"
+
+[tool.git-changelog]
+bump = "minor"
+convention = "basic"
+in-place = false
+marker-line = "<!-- insertion marker -->"
+output = "CHANGELOG.md"
+parse-refs = false
+parse-trailers = false
+provider = "github"
+repository = "."
+sections = "add,fix,change,remove"
+template = "keepachangelog"
+version-regex = "^## \\\\[(?P<version>v?[^\\\\]]+)"
+versioning = "semver"
+zerover = true
 
 [tool.hatch.version]
 path = "src/gpx2artdata/__about__.py"

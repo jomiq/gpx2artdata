@@ -1,6 +1,8 @@
 # gpx2artdata: [gpx.skolbacken.com](https://gpx.skolbacken.com)
 A simple tool for converting `.gpx` files to text for upload to [artportalen.se](https://artportalen.se) 
 
+## About
+
 
 ## Table of Contents
 - [Quickstart](#quickstart)
@@ -14,36 +16,49 @@ A simple tool for converting `.gpx` files to text for upload to [artportalen.se]
 -----
 
 ## Quickstart
-> **REQUIRES** Docker
+> **REQUIRES** `docker`
 
-Convenience script that builds and runs a cintainer:
+Convenience script that builds and runs a container:
 ```
 $ ./scripts/patience.sh [path/to/container/executable]
 ```
 
 ## Install
-> **REQUIRES** Python > 3.10, pip
-Standard installation:
+> **REQUIRES** Python >= 3.10, pip
+
+You can install the `gpx2artdata` module and its dependencies using the `pip`. 
 ```console
 $ pip install .
 ```
+If you want to install the api environment, specify the `server` optional dependency group.
+> **NOTE** This does not install the actual application, which 
+```console
+$ pip install .
+```
+
 
 ## Develop
 > **REQUIRES** Python > 3.10, pip
 
 1. Install build dependencies into a new virtual environment:
-    ```
+    ```console
     $ scripts/dev-setup.sh
     ```
 2. Use `venv`:
-    ```
+    ```console
     $ source .venv/bin/activate 
     ```
 3. Run a development server:
-    ```
-    # option 1, using fastapi-cli:
+    
+    a. Use `fastapi-cli`:
+    ```console
+    (.venv)
     $ ./dev-server.sh
-    # option 2, invoke uvicorn from python (easier to debug):
+    ```
+
+    b. Invoke `uvicorn` from the main python script. This is easier to debug.
+    ```console
+    (.venv) 
     $ python main.py
     ```
 

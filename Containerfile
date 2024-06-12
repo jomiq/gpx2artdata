@@ -13,7 +13,7 @@ COPY templates templates/
 COPY pyproject.toml main.py server.sh README.md ./
 RUN echo ${BUILD_VERSION} > templates/githash.txt
 
-RUN pip install .
+RUN pip install .[server]
 
 RUN chmod +x /app/server.sh
 RUN chown 1000:1000 /app/

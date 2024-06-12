@@ -1,6 +1,7 @@
 # TODOS
 
 ## UI, functions
+- Create a mobile version w/o jazz
 - Add instructions
 - Restrict filetype
 - Validate form before submit
@@ -8,3 +9,7 @@
 
 ## Depl.
 - Fix hardcoded https resources :facepalm:
+- Do `htmx` 
+
+## Stretch goals
+- Changelog generation?
