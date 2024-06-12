@@ -47,6 +47,7 @@ async def post_convert(
         ctx = {"error": str(e)}
 
     ctx["gpx_version"] = gpx2artdata.__version__
+    ctx["result"] = True
     return templates.TemplateResponse(request=request, name="index.html", context=ctx)
 
 

@@ -1,0 +1,40 @@
+{% if result %}
+<article style="text-align: center;">
+  {% if error %} 
+  <h3>He gick int!!!</h3>
+  <details>{{ error }}</details>
+  {% endif %}
+
+  {% if rows %}
+  <h2>{{ title }}</h2> 
+  <hr />
+  <h3>{{ n_rows }} observation{% if n_rows != 1 %}er{% endif %}</h3>
+  <section><button id="copy">Kopiera</button></section>
+  <table id="data">
+    <thead>
+      <tr>
+        <td class="unselectable control"></td>
+        {% for heading in headings %}
+        <td>{{ heading }}</td>
+        {% endfor %}
+        <td style="opacity: 0%;" class="unselectable control"><button></button></td>
+      </tr>
+    </thead>
+    <tbody>
+    {% for row in rows %}
+    <tr>
+      <td class="unselectable control"><button class="toggle"></button></td>
+      <td><input class="species" value="{{ row.species }}"  list="species_list" required /></td>
+      <td><input class="locale" value="{{ row.locale }}" required /></td>
+      <td><input class="accuracy" value="{{ row.accuracy }}" pattern="\d+" required /> m</td>
+      <td><input class="lon" value="{{ row.lon }}" pattern="(\d+.\d+)" required /></td>
+      <td><input class="lat" value="{{ row.lat }}" pattern="(\d+.\d+)" required /></td>
+      <td><input class="date" type="date" pattern="\d{4}-\d{2}-\d{2}" value="{{ row.date }}" required /></td>
+      <td><input class="comment" value="{{ row.comment }}" /></td>  
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+</article>
+{% endif %}

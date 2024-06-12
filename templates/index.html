@@ -11,7 +11,6 @@
   </head>
   <body>
     <main class="container">
-    <main>
       {% if toast %}
       <section style="text-align: center;">
         <h2>Ny address: <a href="https://gpx.skolbacken.com">gpx.skolbacken.com</a></h2>
@@ -21,64 +20,29 @@
       <header style="text-align: center;">
           <h1 style="margin-top: 4rem;">Konvertera GPX-fil till ett format som bara artdata begriper</h1>
       </header>
-        <article>
-            <form action="/" method="POST" enctype="multipart/form-data">
-                <h2>1. Välj en GPX-fil</h2>
-                <input type="file" id="file" name="file" required/>
-                <h2>2. Lokalnamn</h2>
-                <input type="text" id="locale" name="locale" placeholder="Fyll i mig!" required/>
-                <h2>3. Noggrannhet (m)</h2>
-                <input type="number" id="accuracy" value="1" name="accuracy" placeholder="Fyll i mig!" required/>
-                <h2>4. Konvertera</h2>
-                <input type="submit" value="Kör!" />
-            </form>
-        </article>
-        {% if error %} 
-        <article>
-            <h3>He gick int!!!</h3>
-            <details>{{ error }}</details>
-        </article> 
-        {% endif %}
-        
-        {% if rows %}
-        <article style="text-align: center;">
-          <h2>{{ title }}</h2> 
-          <hr />
-          <h3>{{ n_rows }} observation{% if n_rows != 1 %}er{% endif %}</h3>
-          <section><button id="copy">Kopiera</button></section>
-          <table id="data">
-            <thead>
-              <tr>
-                <td class="unselectable control"></td>
-                {% for heading in headings %}
-                <td>{{ heading }}</td>
-                {% endfor %}
-                <td style="opacity: 0%;" class="unselectable control"><button></button></td>
-              </tr>
-            </thead>
-            <tbody>
-            {% for row in rows %}
-            <tr>
-              <td class="unselectable control"><button class="toggle"></button></td>
-              <td><input class="species" value="{{ row.species }}"  list="species_list" required /></td>
-              <td><input class="locale" value="{{ row.locale }}" required /></td>
-              <td><input class="accuracy" value="{{ row.accuracy }}" pattern="\d+" required /> m</td>
-              <td><input class="lon" value="{{ row.lon }}" pattern="(\d+.\d+)" required /></td>
-              <td><input class="lat" value="{{ row.lat }}" pattern="(\d+.\d+)" required /></td>
-              <td><input class="date" type="date" pattern="\d{4}-\d{2}-\d{2}" value="{{ row.date }}" required /></td>
-              <td><input class="comment" value="{{ row.comment }}" /></td>  
-            </tr>
-            {% endfor %}
-            </tbody>
-          </table>
-        </article>
-        <datalist id="species_list">
-        </datalist>
-        {% endif %}
+      <article>
+          <form action="/" method="POST" enctype="multipart/form-data">
+              <h2>1. Välj en GPX-fil</h2>
+              <input type="file" id="file" name="file" required/>
+              <h2>2. Lokalnamn</h2>
+              <input type="text" id="locale" name="locale" placeholder="Fyll i mig!" required/>
+              <h2>3. Noggrannhet (m)</h2>
+              <input type="number" id="accuracy" value="1" name="accuracy" placeholder="Fyll i mig!" required/>
+              <h2>4. Konvertera</h2>
+              <input type="submit" value="Kör!" />
+          </form>
+      </article>
+      
+      <div id="result">
+        {% include "result.html" %}
+      </div>
+      
       <footer style="text-align: right;">
-          <hr>
-          <small>&copy; elektroslöjd 2024 | v{{ gpx_version }} | <a href="https://github.com/jomiq/gpx2artdata"> {% include "githash.txt" %}</a></small>
+        <hr>
+        <small>&copy; elektroslöjd 2024 | v{{ gpx_version }} | <a href="https://github.com/jomiq/gpx2artdata"> {% include "githash.txt" %}</a></small>
       </footer>
     </main>
+        <datalist id="species_list">
+        </datalist>
   </body>
 </html>
