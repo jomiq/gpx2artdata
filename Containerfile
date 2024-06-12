@@ -15,7 +15,7 @@ COPY static static/
 COPY templates templates/
 COPY pyproject.toml main.py server.sh README.md ./
 RUN echo "${GIT_HASH}" > templates/githash.txt
-RUN if [ "${WEBSITE_URL}" != "" ]; then echo "${WEBSITE_URL}/static" > templates/static_url.txt ; fi;
+RUN if [ "${WEBSITE_URL}" != "" ]; then echo "${WEBSITE_URL}/static/" > templates/static_url.txt ; fi;
 
 RUN pip install .[server]
 
