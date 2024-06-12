@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 <!-- insertion marker -->
+## [v1.0.2](https://github.com/jomiq/gpx2artdata/releases/tag/v1.0.2) - 2024-06-12
+
+<small>[Compare with v1.0.1](https://github.com/jomiq/gpx2artdata/compare/v1.0.1...v1.0.2)</small>
+
+### Fixed
+
+- fixed: optional website_url parameter to fix https proxy issues ([798e351](https://github.com/jomiq/gpx2artdata/commit/798e3510fac8a38743ef1fbd7912c52b32800451) by Jon Mihkkal Inga).
+
+### Changed
+
+- changed: documentation ([9b9406a](https://github.com/jomiq/gpx2artdata/commit/9b9406aceed3677dc34143c484123f3409c92467) by Jon Mihkkal Inga).
+
 ## [v1.0.1](https://github.com/jomiq/gpx2artdata/releases/tag/v1.0.1) - 2024-06-12
 
 <small>[Compare with v1.0.0](https://github.com/jomiq/gpx2artdata/compare/v1.0.0...v1.0.1)</small>
