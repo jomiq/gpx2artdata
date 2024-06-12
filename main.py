@@ -32,7 +32,7 @@ def root_ctx(request: Request):
     }
 
 
-def htmx(request: Request):
+def is_htmx(request: Request):
     return request.headers.get("hx-request", False)
 
 
@@ -68,8 +68,16 @@ async def post_convert(
 
     ctx["gpx_version"] = gpx2artdata.__version__
     ctx["result"] = True
-
-    return templates.TemplateResponse(request=request, name="index.html", context=ctx)
+    if is_htmx(request):
+        res = templates.TemplateResponse(
+            request=request, name="result.html", context=ctx
+        )
+        res.headers.append("hx-response", "")
+        return res
+    else:
+        return templates.TemplateResponse(
+            request=request, name="index.html", context=ctx
+        )
 
 
 if __name__ == "__main__":
