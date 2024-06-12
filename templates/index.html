@@ -1,13 +1,14 @@
-<html>
+<!DOCTYPE html>
+<html lang="sv">
   <head>
     <title>{% if title %}{{ title }} - {% endif %}gpx2artdata</title>
     <link rel="icon" href="https://gpx.skolbacken.com/static/favicon.png"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.green.min.css" />
     <link rel="stylesheet" href="https://gpx.skolbacken.com/static/style.css" />
-    {% if rows %}
+
+    <script src="https://unpkg.com/htmx.org@1.9.12" integrity="sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2" crossorigin="anonymous"></script>
     <script src="{% include 'static_url.txt' %}dictionary.js"></script>
     <script src="{% include 'static_url.txt' %}main.js"></script>
-    {% endif %}
   </head>
   <body>
     <main class="container">
@@ -21,7 +22,7 @@
           <h1 style="margin-top: 4rem;">Konvertera GPX-fil till ett format som bara artdata begriper</h1>
       </header>
       <article>
-          <form action="/" method="POST" enctype="multipart/form-data">
+          <form hx-encoding='multipart/form-data' hx-post='/'>
               <h2>1. Välj en GPX-fil</h2>
               <input type="file" id="file" name="file" required/>
               <h2>2. Lokalnamn</h2>

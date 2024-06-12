@@ -12,6 +12,7 @@ node_modules
 
 cert.pem
 key.pem
+hostname.txt
 
 __pycache__
 .pytest_cache
