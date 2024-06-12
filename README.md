@@ -97,6 +97,7 @@ This repo is configured to build and push a docker image to the Google Cloud/Art
 > - Aborts if the repo is not clean.
 > - A short commit hash will be stored in `templates/githash.txt` and displayed in the footer.
 > - The default entrypoint (`server.sh`) runs the server with `--proxy-headers`. The reason is [this](https://www.googlecloudcommunity.com/gc/Serverless/Containerized-FastAPI-app-using-Uvicorn-serving-JS-amp-CSS/m-p/681551).
+> - For the same reason the `WEBSITE_URL` is required at container build time. This hard-codes the `/static` endpoint so it serves https, as the gods intended.   
 
 
 ## License
