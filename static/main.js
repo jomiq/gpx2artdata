@@ -1,20 +1,14 @@
-function reset_copy_button() {
-  const copy_button = document.getElementById("copy");
-  copy_button.classList.remove("secondary");
-  copy_button.innerHTML = "Kopiera";
-}
-
 function get_table_heading_text() {
   let cells = document.querySelectorAll("#data thead tr td:not(.control)");
   let res = [];
   cells.forEach((c) => {
     res.push(c.innerHTML);
   });
-  return res.join("\t")
+  return res.join("\t");
 }
 
 function get_table_rows() {
-  return document.querySelectorAll("#data tbody tr:not(.disabled)")
+  return document.querySelectorAll("#data tbody tr:not(.disabled)");
 }
 
 function get_row_text(tr) {
@@ -22,7 +16,7 @@ function get_row_text(tr) {
   let res = [];
   cells.forEach((c) => {
     val = c.value;
-    if(c.classList.contains("accuracy")){
+    if (c.classList.contains("accuracy")) {
       val += " m";
     }
     res.push(val);
@@ -30,14 +24,14 @@ function get_row_text(tr) {
   return res.join("\t");
 }
 
-function get_table_text(){
+function get_table_text() {
   let res = [get_table_heading_text()];
-  
+
   let rows = get_table_rows();
-  rows.forEach( (row) => {
+  rows.forEach((row) => {
     res.push(get_row_text(row));
   });
-  return res.join("\n")
+  return res.join("\n");
 }
 
 function add_options_to_list(list_id, data) {
@@ -63,13 +57,35 @@ function validate_species(el) {
   }
 }
 
-document.addEventListener("DOMContentLoaded", (e) => {
+function init_results() {
   const species_inputs = document.querySelectorAll("input.species");
   add_options_to_list("species_list", dictionary);
   species_inputs.forEach((el) => {
     validate_species(el);
     el.addEventListener("input", (e) => {
       validate_species(e.target);
+    });
+  });
+
+  const copy_button = document.getElementById("copy");
+  if (copy_button != null) {
+    copy_button.addEventListener("click", (e) => {
+      let txt = get_table_text();
+      navigator.clipboard.writeText(txt);
+      copy_button.classList.add("secondary");
+      copy_button.innerHTML = "Kopierat!";
+    });
+  }
+
+  function reset_copy_button() {
+    copy_button.classList.remove("secondary");
+    copy_button.innerHTML = "Kopiera";
+  }
+  
+  const all_inputs = document.querySelectorAll("#data input");
+  all_inputs.forEach((el) => {
+    el.addEventListener("input", (e) => {
+      reset_copy_button();
     });
   });
 
@@ -80,17 +96,9 @@ document.addEventListener("DOMContentLoaded", (e) => {
       reset_copy_button();
     });
   });
+}
 
-  const copy_button = document.getElementById("copy");
-  copy_button.addEventListener("click", (e) => {
-    let txt = get_table_text();
-    navigator.clipboard.writeText(txt);
-    copy_button.classList.add("secondary");
-    copy_button.innerHTML = "Kopierat!";
-  });
-
-  const all_inputs = document.querySelectorAll("#data input");
-  all_inputs.forEach((el) => {
-    el.addEventListener("input", (e) => {reset_copy_button()});
-  });
+document.addEventListener("htmx:afterSettle", (e) => {
+  console.log(e);
+  init_results();
 });

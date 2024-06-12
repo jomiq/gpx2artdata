@@ -43,7 +43,12 @@
         <small>&copy; elektroslöjd 2024 | v{{ gpx_version }} | <a href="https://github.com/jomiq/gpx2artdata"> {% include "githash.txt" %}</a></small>
       </footer>
     </main>
-        <datalist id="species_list">
-        </datalist>
+    <datalist id="species_list">
+    </datalist>
+    <script>
+      document.addEventListener("DOMContentLoaded", (e) => {
+        init_results();
+      });
+    </script>
   </body>
 </html>
