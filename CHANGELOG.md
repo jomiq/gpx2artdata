@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 <!-- insertion marker -->
+## [v1.0.1](https://github.com/jomiq/gpx2artdata/releases/tag/v1.0.1) - 2024-06-12
+
+<small>[Compare with v1.0.0](https://github.com/jomiq/gpx2artdata/compare/v1.0.0...v1.0.1)</small>
+
+### Added
+
+- added: bump-version script ([f6761f1](https://github.com/jomiq/gpx2artdata/commit/f6761f1cc03e55faf0a3719a12715dc0a0fc83df) by Jon Mihkkal Inga).
+
+### Changed
+
+- changed: split out gpx2artdata dependencies from deployment environment. added: [server] install target for deployment added: changelog generation ([d4e4b37](https://github.com/jomiq/gpx2artdata/commit/d4e4b37e9e062f5187e821e9937a1a32502973a4) by Jon Mihkkal Inga).
+
 ## [v1.0.0](https://github.com/jomiq/gpx2artdata/releases/tag/v1.0.0) - 2024-06-11
 
 <small>[Compare with first commit](https://github.com/jomiq/gpx2artdata/compare/a49cad59f669cd3bbacd69a3449987e2b105dd15...v1.0.0)</small>
