@@ -16,7 +16,7 @@
     <main class="container">
       {% if toast %}
       <section style="text-align: center;">
-        <h2>Ny address: <a href="https://gpx.skolbacken.com">gpx.skolbacken.com</a></h2>
+        <h2>Ny address: <a href="{{ env['PROTOCOL'] }}://{{ env['WEBSITE_HOSTNAME'] }}">{{ env['WEBSITE_HOSTNAME'] }}</a></h2>
         <p>(sjukt mycket lättare att komma ihåg)</p>
       </section>
       {% endif %}
@@ -42,7 +42,7 @@
       
       <footer style="text-align: right;">
         <hr>
-        <small>&copy; elektroslöjd 2024 | v{{ gpx_version }} | <a href="https://github.com/jomiq/gpx2artdata"> {% include "githash.txt" %}</a></small>
+        <small>&copy; elektroslöjd 2024 | <a href="https://github.com/jomiq/gpx2artdata"> {{ env['BUILD_VERSION'] }}</a></small>
       </footer>
     </main>
     <datalist id="species_list">

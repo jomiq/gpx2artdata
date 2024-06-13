@@ -12,7 +12,7 @@ node_modules
 
 cert.pem
 key.pem
-hostname.txt
+website_url.txt
 
 __pycache__
 .pytest_cache

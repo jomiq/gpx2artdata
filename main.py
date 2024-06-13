@@ -8,27 +8,37 @@ from fastapi.templating import Jinja2Templates
 
 import os
 
-try:
-    with open("hostname.txt") as f:
-        HOSTNAME = f.read()
-except FileNotFoundError as _:
-    pass
+PRODUCTION = os.environ.get("GPX2ARTDATA_PROD", False)
+WEBSITE_HOSTNAME = os.environ.get("WEBSITE_HOSTNAME", False)
+STATIC_URL = os.environ.get("STATIC_URL", False)
+BUILD_VERSION = os.environ.get("BUILD_VERSION", "dev")
+PROTOCOL = "http"
 
-STATIC = "static"
-if os.environ.get("GPX2ARTDATA_PROD", False):
+if PRODUCTION:
+    PROTOCOL = "https"
     app = fastapi.FastAPI(docs_url=None, redoc_url=None)
 else:
     app = fastapi.FastAPI()
 
+WEBSITE_URL = f"{PROTOCOL}://{WEBSITE_HOSTNAME}"
+
 static_app = StaticFiles(directory="static")
 app.mount("/static", static_app, name="static")
+
 templates = Jinja2Templates(directory="templates")
 
 
 def root_ctx(request: Request):
+    print(f"***** {request.base_url}")
     return {
-        "toast": HOSTNAME and bool(HOSTNAME not in str(request.base_url)),
-        "gpx_version": gpx2artdata.__version__,
+        "toast": WEBSITE_HOSTNAME
+        and bool(WEBSITE_HOSTNAME not in str(request.base_url)),
+        "env": {
+            "STATIC_URL": STATIC_URL,
+            "PROTOCOL": PROTOCOL,
+            "WEBSITE_HOSTNAME": WEBSITE_HOSTNAME,
+            "BUILD_VERSION": BUILD_VERSION,
+        },
     }
 
 
@@ -39,13 +49,7 @@ def is_htmx(request: Request):
 @app.get("/", response_class=HTMLResponse)
 async def root(request: Request):
     return templates.TemplateResponse(
-        request=request,
-        name="index.html",
-        context={
-            "title": "gpx2artdata",
-            "toast": bool("gpx.skolbacken.com" not in str(request.base_url)),
-            "gpx_version": gpx2artdata.__version__,
-        },
+        request=request, name="index.html", context=root_ctx(request)
     )
 
 
@@ -56,18 +60,15 @@ async def post_convert(
     locale: Annotated[str, Form()] = "",
     accuracy: Annotated[int, Form()] = 1,
 ):
-    ctx = root_ctx(request)
     try:
-        ctx.update(
-            gpx2artdata.do_convert(
-                file=file.file, title=file.filename, locale=locale, accuracy=accuracy
-            )
+        ctx = gpx2artdata.do_convert(
+            file=file.file, title=file.filename, locale=locale, accuracy=accuracy
         )
     except Exception as e:
         ctx = {"error": str(e)}
 
-    ctx["gpx_version"] = gpx2artdata.__version__
     ctx["result"] = True
+
     if is_htmx(request):
         res = templates.TemplateResponse(
             request=request, name="result.html", context=ctx
@@ -75,6 +76,7 @@ async def post_convert(
         res.headers.append("hx-response", "")
         return res
     else:
+        ctx.update(root_ctx(request))
         return templates.TemplateResponse(
             request=request, name="index.html", context=ctx
         )

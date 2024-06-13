@@ -1,13 +1,19 @@
 #! /bin/bash
+
+if [ "$1" != "" ]; then
+  echo "no push, only build"
+fi
+
+scripts/build.sh gcloud.env
+
 if [ -z "$(git status --untracked-files=no --porcelain)" ]; then 
   # Working directory clean excluding untracked files
+  if [ "$1" == "" ]; then
     git push
-    BUILD_VERSION=$(git rev-parse --short HEAD)
     source gcloud.env
     gcloud auth configure-docker ${REGION}-docker.pkg.dev
-
-    docker build --build-arg git_hash=${BUILD_VERSION} --build-arg website_url=${WEBSITE_URL} -t $IMAGE_TAG -f Containerfile --platform linux/x86_64 .
     docker push $IMAGE_TAG
+  fi
 else 
   # Uncommitted changes in tracked files
     echo Aborting: we do not push uncommitted changes in this house
