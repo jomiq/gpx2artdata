@@ -24,7 +24,7 @@
           <h1 style="margin-top: 4rem;">Konvertera GPX-fil till ett format som bara artdata begriper</h1>
       </header>
       <article>
-          <form hx-encoding='multipart/form-data' hx-post='/' hx-target="#result", hx-swap="innerHTML swap:1s">
+          <form hx-encoding='multipart/form-data' hx-post='/' hx-target="#result", hx-swap="innerHTML swap:1s", hx-indicator="#loading">
               <h2>1. Välj en GPX-fil</h2>
               <input type="file" id="file" name="file" required/>
               <h2>2. Lokalnamn</h2>
@@ -35,7 +35,8 @@
               <input type="submit" value="Kör!" />
           </form>
       </article>
-
+      
+      <h1 id="loading" class="htmx-indicator" aria-busy="true"></h1>
       <div id="result">
         {% include "result.html" %}
       </div>
