@@ -6,6 +6,27 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 <!-- insertion marker -->
+## [v1.1.0](https://github.com/jomiq/gpx2artdata/releases/tag/v1.1.0) - 2024-06-13
+
+<small>[Compare with v1.0.3](https://github.com/jomiq/gpx2artdata/compare/v1.0.3...v1.1.0)</small>
+
+### Added
+
+- added: loading symbol ([06c5cb5](https://github.com/jomiq/gpx2artdata/commit/06c5cb51608f600e2aadf5a0c963bd2dcea327dd) by Jon Mihkkal Inga).
+- added some icons ([4424a3e](https://github.com/jomiq/gpx2artdata/commit/4424a3e125b1213d37f3e3ad2906705a304eade1) by Jon Mihkkal Inga).
+- added meta tag to get responsive layout ([b45be6d](https://github.com/jomiq/gpx2artdata/commit/b45be6da667eb09a1b170671c712db9c75519cf9) by Jon Mihkkal Inga).
+- added: htmx integration ([564d03a](https://github.com/jomiq/gpx2artdata/commit/564d03aca5275554171e580a649800322f95fbc3) by Jon Mihkkal Inga).
+
+### Fixed
+
+- fix css not serving correctly on dev server ([9094e4f](https://github.com/jomiq/gpx2artdata/commit/9094e4f9bdf9f961a59ca4e99082f7d386bc37e8) by Jon Mihkkal Inga).
+
+### Changed
+
+- changed: title removed from gpx2artdata module ([427b4e7](https://github.com/jomiq/gpx2artdata/commit/427b4e78cf14f069802c1372bfe5e689d681939d) by Jon Mihkkal Inga).
+- changed: use toggles for disabling rows, only hide on desktop using media (pointer: fine) ([72fe392](https://github.com/jomiq/gpx2artdata/commit/72fe392c3fa17490fa50e831d6444745615d1a98) by Jon Mihkkal Inga).
+- change: use validated plain text input for date. ([cfeb695](https://github.com/jomiq/gpx2artdata/commit/cfeb695a39f67e0381f4bdc62d112c33553065ac) by Jon Mihkkal Inga).
+
 ## [v1.0.3](https://github.com/jomiq/gpx2artdata/releases/tag/v1.0.3) - 2024-06-12
 
 <small>[Compare with v1.0.2](https://github.com/jomiq/gpx2artdata/compare/v1.0.2...v1.0.3)</small>
