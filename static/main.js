@@ -91,9 +91,12 @@ function init_results() {
 
   const toggles = document.querySelectorAll(".toggle");
   toggles.forEach((button) => {
-    button.addEventListener("click", (e) => {
-      e.target.parentNode.parentNode.classList.toggle("disabled");
-      reset_copy_button();
+    button.addEventListener("input", (e) => {
+      if (e.target.checked) {
+        e.target.parentNode.parentNode.classList.remove("disabled");
+      } else {
+        e.target.parentNode.parentNode.classList.add("disabled");
+      }
     });
   });
 }
