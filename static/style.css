@@ -22,17 +22,21 @@ tbody tr.disabled {
 }
 
 tbody tr:hover {
-  td {
-    background-color: var(--pico-background-contrast-color);
-    input.toggle {
+  td input.toggle {
       opacity: 100%;
     }
+  td:not(.control) {
+    background-color: var(--pico-text-selection-color);
   }
 }
 
 .danger, 
 td:has(input:invalid) {
   border-bottom: 3px solid var(--pico-del-color);
+}
+
+.error {
+  color: var(--pico-del-color);
 }
 
 td input:not([type="checkbox"], [type="radio"]) {
@@ -66,4 +70,13 @@ input.accuracy {
 
 input.date {
   width: 6rem;
+}
+
+input.comment {
+  min-width: 8rem;
+}
+
+.hidden {
+  display: none;
+  transition: all 0.2s linear;
 }

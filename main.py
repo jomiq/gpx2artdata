@@ -66,6 +66,7 @@ async def post_convert(
         ctx = {"error": str(e)}
 
     ctx["result"] = True
+    ctx["title"] = f"{file.filename} - {locale}"
 
     if is_htmx(request):
         res = templates.TemplateResponse(

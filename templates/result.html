@@ -1,29 +1,46 @@
 {% if result %}
-<section style="text-align: center;">
-  {% if error %} 
-  <article>
-    <h3>He gick int!!!</h3>
-    <details>
-      <summary>Info</summary>
-      {{ error }}
-    </details>
-  </article>
-  {% endif %}
-
-  {% if rows %}
-  <article>
+<section>
+  <section style="text-align: center;">
     <h1>{{ title }}</h1>
     <hr />
+    {% if rows %}
     <h3>{{ n_rows }} observation{% if n_rows != 1 %}er{% endif %}</h3>
-    <section><button id="copy">Kopiera <i class="fa fa-copy"></i></button></section>
+    {% endif %}
+    {% if error %}
+    <h1><i class="fa fa-times-circle error" ></i></h1>
+    <h2 style="color: var(--pico-del-color)">Det gick inte!</h2>
+    <details style="text-align: right;">
+      <summary>info</summary>
+      {{ error }} <i class="fa fa-meh-o"></i>
+    </details>
+    <hr />
+
+    {% endif %}
+  </section>
+  
+  {% if rows %}
+  <article>
+    <section>
+      <h2>4. Redigera och välj rader  <i class="fa fa-edit"></i></h2>
+    </section>
+    <section>
+      <h2>5. <span id="copy-msg">Kopiera <i class="fa fa-hand-o-right"></i></span> <i id="copy" class="fa fa-copy" role="button"></i></h2>
+    </section>
+    <section id="step6" class="hidden">
+      <h2 >6. Gå till <a id="ap-link" href="https://artportalen.se/ImportSighting" target="_blank">Artportalen</a>  <i class="fa fa-hand-o-right"></i></h2>
+    </section>
+    <section id="easter-egg" class="hidden">
+      <h2 >7. Rädda skogen!  <i class="fa fa-heart-o" style="color: var(--pico-del-color)"></i></h2>
+    </section>
   </article>
+
   <section class="overflow-auto">
     <table id="data">
       <thead>
         <tr>
           <th class="unselectable control"></td>
           {% for heading in headings %}
-          <th>{{ heading }}</td>
+          <th>{{ heading }}</th>
           {% endfor %}
           <th class="unselectable control"><input style="opacity: 0%;" type="checkbox" role="switch"/></td>
         </tr>
