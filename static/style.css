@@ -32,7 +32,7 @@ tbody tr:hover {
 
 .danger, 
 td:has(input:invalid) {
-  border-left: 3px solid var(--pico-del-color);
+  border-bottom: 3px solid var(--pico-del-color);
 }
 
 td input:not([type="checkbox"], [type="radio"]) {
@@ -50,7 +50,6 @@ td input:not([type="checkbox"], [type="radio"]) {
 
 td input:not([type="checkbox"], [type="radio"]):focus {
   box-shadow: none;
-
 }
 
 input.species {
@@ -66,5 +65,5 @@ input.accuracy {
 }
 
 input.date {
-  width: 8rem;
+  width: 6rem;
 }
