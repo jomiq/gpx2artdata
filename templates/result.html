@@ -25,13 +25,13 @@
           {% for heading in headings %}
           <th>{{ heading }}</td>
           {% endfor %}
-          <th class="unselectable control"><button style="opacity: 0%;"></button></td>
+          <th class="unselectable control"><input style="opacity: 0%;" type="checkbox" role="switch"/></td>
         </tr>
       </thead>
       <tbody>
       {% for row in rows %}
       <tr>
-        <td class="unselectable control"><button class="toggle"></button></td>
+        <td class="unselectable control"><input class="toggle" type="checkbox" role="switch" checked/></td>
         <td><input class="species" value="{{ row.species }}"  list="species_list" required /></td>
         <td><input class="locale" value="{{ row.locale }}" required /></td>
         <td><input class="accuracy" value="{{ row.accuracy }}" pattern="\d+" required /> m</td>

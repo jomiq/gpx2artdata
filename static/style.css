@@ -15,14 +15,16 @@ tbody tr.disabled {
   opacity: 50%;
 }
 
-tr td button {
-  opacity: 0%;
+@media (pointer: fine) {
+  tbody tr td input.toggle {
+    opacity: 0%;
+  }
 }
 
 tbody tr:hover {
   td {
     background-color: var(--pico-background-contrast-color);
-    button {
+    input.toggle {
       opacity: 100%;
     }
   }
