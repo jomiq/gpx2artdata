@@ -61,9 +61,7 @@ async def post_convert(
     accuracy: Annotated[int, Form()] = 1,
 ):
     try:
-        ctx = gpx2artdata.do_convert(
-            file=file.file, title=file.filename, locale=locale, accuracy=accuracy
-        )
+        ctx = gpx2artdata.do_convert(file=file.file, locale=locale, accuracy=accuracy)
     except Exception as e:
         ctx = {"error": str(e)}
 
