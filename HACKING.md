@@ -83,6 +83,17 @@ Use [`scripts/dev-setup.sh`](scripts/dev-setup.sh) to set up a local development
     $ python main.py
     ```
 
+### Runtime environment
+> **NOTE** The container server will run in production mode by default. For building and testing locally without a https proxy, set `$PRODUCTION=False`.
+
+- `$PRODUCTION` Disables the documentation endpoints and ensures that all generated URLs are https://
+- `$WEBSITE_HOSTNAME` Used for showing link to new URL 
+- `$PROTOCOL` (optional) Defaults to https in production mode, but http is used by `dev-server.sh`
+- `$STATIC_URL` (optional) Set to fully qualified URL if the `static/` endpoint is served from a different location. This is also needed to ensure https under various proxy setups.
+- `$BUILD_VERSION` displays in page footer
+
+
+
 ### JavaScript and frontend parts
 > **WARNING** The `main.js` component is developed ad-hoc by an absolute amateur. Several conflicting best practices are pursued simultaneously. There is no toolchain. Good luck. 
 
