@@ -84,15 +84,15 @@ Use [`scripts/dev-setup.sh`](scripts/dev-setup.sh) to set up a local development
     ```
 
 ### Runtime environment
-> **NOTE** The container server will run in production mode by default. For building and testing locally without a https proxy, set `$PRODUCTION=False`.
+> **NOTE** The containerized server will run in production mode by default. For building and testing locally without a https proxy, set `$PRODUCTION=False`.
+
+See [`local.env.example`](local.env.example) for example values.
 
 - `$PRODUCTION` Disables the documentation endpoints and ensures that all generated URLs are https://
 - `$WEBSITE_HOSTNAME` Used for showing link to new URL 
 - `$PROTOCOL` (optional) Defaults to https in production mode, but http is used by `dev-server.sh`
 - `$STATIC_URL` (optional) Set to fully qualified URL if the `static/` endpoint is served from a different location. This is also needed to ensure https under various proxy setups.
 - `$BUILD_VERSION` displays in page footer
-
-
 
 ### JavaScript and frontend parts
 > **WARNING** The `main.js` component is developed ad-hoc by an absolute amateur. Several conflicting best practices are pursued simultaneously. There is no toolchain. Good luck. 
@@ -124,7 +124,10 @@ There is a simple sanity check in the `tests` folder.
 
 > **ARGUMENTS** `env_file`, path to a .env file. Default is `local.env` 
 
-Use [`scripts/build.sh`](scripts/build.sh) to build a container image. See `local.env.example` for configuration options. 
+Use [`scripts/build.sh`](scripts/build.sh) to build a container image. See [`local.env.example`](local.env.example) and [Runtime environment](#runtime-environment) for configuration options. 
+
+> - **NOTE** The default entrypoint (`server.sh`) runs the server with `--proxy-headers`. The reason is [this](https://www.googlecloudcommunity.com/gc/Serverless/Containerized-FastAPI-app-using-Uvicorn-serving-JS-amp-CSS/m-p/681551).
+
 
 ## Deploy
 > **REQUIRES** `gcloud` (Google Cloud platform CLI) and authentication
@@ -137,9 +140,7 @@ Use [`scripts/gcloud-push.sh`](scripts/gcloud-push.sh) to build and push the ima
 
 > **NOTES** on `gcloud-push.sh`
 > 
-> - Aborts if the repo is not clean-ish.
-> - The default entrypoint (`server.sh`) runs the server with `--proxy-headers`. The reason is [this](https://www.googlecloudcommunity.com/gc/Serverless/Containerized-FastAPI-app-using-Uvicorn-serving-JS-amp-CSS/m-p/681551).
-> - For the same reason the `WEBSITE_URL` is required at container build time. This hard-codes the `/static` endpoint so it serves https, as the gods intended.   
+> - Aborts if the repo is not clean-ish.   
 > - If the script is run with *any* argument it will just build the container. IDK just so you know.
 
 

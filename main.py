@@ -8,11 +8,11 @@ from fastapi.templating import Jinja2Templates
 
 import os
 
-PRODUCTION = os.environ.get("PRODUCTION", True).lower() not in ["false"]
+PRODUCTION = os.environ.get("PRODUCTION", "True").lower() not in ["false"]
+PROTOCOL = os.environ.get("PROTOCOL", "http")
 WEBSITE_HOSTNAME = os.environ.get("WEBSITE_HOSTNAME", False)
 STATIC_URL = os.environ.get("STATIC_URL", False)
 BUILD_VERSION = os.environ.get("BUILD_VERSION", "dev")
-PROTOCOL = os.environ.get("PROTOCOL", "http")
 
 if PRODUCTION:
     PROTOCOL = "https"
@@ -83,5 +83,5 @@ async def post_convert(
 if __name__ == "__main__":
     import uvicorn
 
-    port = os.environ.get("PORT", "8080")
+    port = int(os.environ.get("PORT", 8080))
     uvicorn.run(app, host="0.0.0.0", port=port, proxy_headers=True)
