@@ -7,6 +7,7 @@ echo && echo
 
 source $ENV_FILE
 ENGINE=${ENGINE-"docker"}
+PRODUCTION=${PRODUCTION-1}
 
 BUILD_VERSION="$(git describe --exact-match --tags HEAD)"
 
@@ -20,4 +21,4 @@ else
 fi
 
 echo "*** $ENGINE: building $BUILD_VERSION ***"
-$ENGINE build --pull --rm --progress=plain --build-arg build_version=${BUILD_VERSION} --build-arg website_hostname=${WEBSITE_HOSTNAME} --build-arg static_url=${STATIC_URL} -t $IMAGE_TAG -f Containerfile --platform linux/x86_64 .
+$ENGINE build --pull --rm --progress=plain --build-arg production=${PRODUCTION} --build-arg build_version=${BUILD_VERSION} --build-arg website_hostname=${WEBSITE_HOSTNAME} --build-arg static_url=${STATIC_URL} -t $IMAGE_TAG -f Containerfile --platform linux/x86_64 .

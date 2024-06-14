@@ -8,13 +8,13 @@ from fastapi.templating import Jinja2Templates
 
 import os
 
-PROD = os.environ.get("GPX2ARTDATA_PROD", "False").lower() in [1, "true"]
+PRODUCTION = os.environ.get("PRODUCTION", True).lower() not in ["false"]
 WEBSITE_HOSTNAME = os.environ.get("WEBSITE_HOSTNAME", False)
 STATIC_URL = os.environ.get("STATIC_URL", False)
 BUILD_VERSION = os.environ.get("BUILD_VERSION", "dev")
-PROTOCOL = "http"
+PROTOCOL = os.environ.get("PROTOCOL", "http")
 
-if PROD:
+if PRODUCTION:
     PROTOCOL = "https"
     app = fastapi.FastAPI(docs_url=None, redoc_url=None)
 else:

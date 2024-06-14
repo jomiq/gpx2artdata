@@ -8,7 +8,7 @@ scripts/build.sh gcloud.env
 
 if [ -z "$(git status --untracked-files=no --porcelain)" ]; then 
   # Working directory must be clean. 
-  # Untracked files are ok though
+  # Untracked files are ok though.
   if [ "$1" == "" ]; then
     git push
     source gcloud.env

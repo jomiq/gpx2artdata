@@ -1,8 +1,17 @@
 #!/bin/bash
 # Starts FASTAPI server locally with uvicorn
-GPX2ARTDATA_PROD=${1-"False"}
 source local.env
-export BUILD_VERSION="local"
 cat local.env
+
+if [ "$PRODUCTION" == "" ]; then
+    PRODUCTION=${1-"false"}
+    BUILD_VERSION="${BUILD_VERSION-'none'}-dev"
+else
+    BUILD_VERSION=${BUILD_VERSION-"none"}
+fi
+
+export PRODUCTION
+export BUILD_VERSION
+
 echo && echo
 fastapi dev --port 8080

@@ -2,10 +2,12 @@ FROM python:3.12-slim
 
 EXPOSE 8080
 
+ARG production="True"
 ARG build_version="unknown"
 ARG website_hostname=""
 ARG static_url=""
 
+ENV PRODUCTION ${production}
 ENV BUILD_VERSION ${build_version}
 ENV WEBSITE_HOSTNAME ${website_hostname}
 ENV STATIC_URL ${static_url}

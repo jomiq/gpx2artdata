@@ -122,13 +122,14 @@ Use [`scripts/build.sh`](scripts/build.sh) to build a container image. See `loca
 
 This repo is configured to build and push a docker image to the Google Cloud/Artifact registry with a minimal amount of Google lock-in bullshit. 
 
-Use [`scripts/gcloud-push.sh`] to 
+Use [`scripts/gcloud-push.sh`](scripts/gcloud-push.sh) to build and push the image. Configuring the required Google Cloud Artifact registry is beyond the scope of this guide. I found this [article](https://medium.com/@taylorhughes/how-to-deploy-an-existing-docker-container-project-to-google-cloud-run-with-the-minimum-amount-of-daca0b5978d8) helpful. 
 
 > **NOTES** on `gcloud-push.sh`
 > 
 > - Aborts if the repo is not clean-ish.
 > - The default entrypoint (`server.sh`) runs the server with `--proxy-headers`. The reason is [this](https://www.googlecloudcommunity.com/gc/Serverless/Containerized-FastAPI-app-using-Uvicorn-serving-JS-amp-CSS/m-p/681551).
 > - For the same reason the `WEBSITE_URL` is required at container build time. This hard-codes the `/static` endpoint so it serves https, as the gods intended.   
+> - If the script is run with *any* argument it will just build the container. IDK just so you know.
 
 
 ## License
