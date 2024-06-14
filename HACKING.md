@@ -99,6 +99,7 @@ Functions for fetching and filtering taxon data are in [`scripts/species_list.py
 
 ### Versioning
 > **INFO** This package uses [Semantic Versioning](https://semver.org/). 
+
 > **ARGUMENTS** `scripts/bump-version.sh` accepts either a full version string like `1.5.2`, or one of the keywords `major`, `minor` and `patch`. If a second argument is provided it will be used as a description for the new version tag. 
 
 Versioning is provided by `hatch`. Use [`scripts/bump-version.sh`](scripts/bump-version.sh) to generate the [`CHANGELOG.md`](CHANGELOG.md). 
