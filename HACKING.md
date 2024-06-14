@@ -1,7 +1,10 @@
 # HACKING.md
 
 ## About [gpx.skolbacken.com](https://gpx.skolbacken.com)
-A simple tool for converting `.gpx` files to text for upload to [artportalen.se](https://artportalen.se) 
+A simple tool for converting `.gpx` files to text for upload to [artportalen.se](https://artportalen.se). It works like this:
+1. The user uploads a  `.gpx` file that is processed and returned as a table. 
+2. The user can edit and select which rows to include. The application can highlight misspelled and mal-formatted entries and provide corrections from a dictionary. 
+3. The user can copy the result to clipboard as plain text by pressing a friendly button. 
 
 ### Tech stash overview:
 * [FastAPI](https://fastapi.tiangolo.com/) - like regular APIs but also fast
