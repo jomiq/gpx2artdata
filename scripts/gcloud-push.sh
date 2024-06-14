@@ -7,7 +7,8 @@ fi
 scripts/build.sh gcloud.env
 
 if [ -z "$(git status --untracked-files=no --porcelain)" ]; then 
-  # Working directory clean excluding untracked files
+  # Working directory must be clean. 
+  # Untracked files are ok though
   if [ "$1" == "" ]; then
     git push
     source gcloud.env
@@ -16,5 +17,5 @@ if [ -z "$(git status --untracked-files=no --porcelain)" ]; then
   fi
 else 
   # Uncommitted changes in tracked files
-    echo Aborting: we do not push uncommitted changes in this house
+    echo Aborting: we do not push with uncommitted changes in this house
 fi

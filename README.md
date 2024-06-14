@@ -12,7 +12,7 @@ Rädda skogen!
 
 ## Develop, Deploy your own or Contribute!
 All contributions are welcome! 
-See `HACKING.md` for (kindof) up-to-date instructions. 
+See [`HACKING.md`](HACKING.md) for (kindof) up-to-date instructions. 
 
 ## License
 `gpx2artdata` is distributed under the terms of the [MIT](https://spdx.org/licenses/MIT.html) license.

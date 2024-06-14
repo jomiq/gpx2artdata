@@ -1,7 +1,18 @@
-# gpx2artdata: [gpx.skolbacken.com](https://gpx.skolbacken.com)
+# HACKING.md
+
+## About [gpx.skolbacken.com](https://gpx.skolbacken.com)
 A simple tool for converting `.gpx` files to text for upload to [artportalen.se](https://artportalen.se) 
 
-## About
+### Tech stash overview:
+* [FastAPI](https://fastapi.tiangolo.com/) - like regular APIs but also fast
+* [jinja2](https://jinja.palletsprojects.com/) - {{ funny_description|censor_words }}
+* [Hatchling](https://pypi.org/project/hatchling/) - package build system
+* [htmx](https://htmx.org/) - the wheel reinvented for the last time, again
+* [Pico css](https://picocss.com/) - unintrusive css framework
+* [Fontawesome icons](https://docs.fontawesome.com/web) - the path of least resistance
+
+### Deployment
+This repo builds a docker image that is manually deployed on Google Cloud compute. 
 
 
 ## Table of Contents
@@ -15,30 +26,40 @@ A simple tool for converting `.gpx` files to text for upload to [artportalen.se]
 
 -----
 
-## Quickstart
+## Quickstart: [`scripts/patience.sh`](scripts/patience.sh)
+Convenience script that builds and runs the container.
 > **REQUIRES** `docker`
 
-Convenience script that builds and runs a container:
+> **ARGUMENTS** `engine`: optional path to container runtime. (Default is "docker")
+
 ```
-$ ./scripts/patience.sh [path/to/container/executable]
+$ scripts/patience.sh [path/to/engine]
 ```
 
-## Install
-> **REQUIRES** Python >= 3.10, pip
+## Installation
+> **REQUIRES** `python` >= 3.10, `pip`
 
 You can install the `gpx2artdata` module and its dependencies using the `pip`. 
 ```console
 $ pip install .
 ```
 If you want to install the api environment, specify the `server` optional dependency group.
-> **NOTE** This does not install the actual application, which 
+> **NOTE** This does not install the actual application, which lives in [`main.py`](main.py)
 ```console
-$ pip install .
+$ pip install .[server]
+```
+For development, please use the `[dev]` group and pass the `-e` flag to make the installation ediatable-in-place.
+> **TIP** Use a virtual environment [like a sane person](#develop).
+```console
+$ pip install -e .[dev]
 ```
 
-
 ## Develop
-> **REQUIRES** Python > 3.10, pip
+> **REQUIRES** `python` > 3.10, `pip`
+
+Use [`scripts/dev-setup.sh`](scripts/dev-setup.sh) to set up a local development environment. 
+
+> **IMPORTANT** The script preserves any configuration done in `local.env` but unconditionally torches your `.venv` folder. 
 
 1. Install build dependencies into a new virtual environment:
     ```console
@@ -56,46 +77,53 @@ $ pip install .
     $ ./dev-server.sh
     ```
 
-    b. Invoke `uvicorn` from the main python script. This is easier to debug.
+    b. Invoke `uvicorn` from the main python script. I find this easier to debug.
     ```console
     (.venv) 
     $ python main.py
     ```
 
-### JavaScript parts
-It's all vanilla spaghetti by an absolute amateur. Good luck.
+### JavaScript and frontend parts
+> **WARNING** The `main.js` component is developed ad-hoc by an absolute amateur. Several conflicting best practices are pursued simultaneously. There is no toolchain. Good luck. 
+
+This application relies on [`htmx`](https://htmx.org) for asynchronous requests and DOM patching. There really isn't that much to it. See [`main.py`](main.py): `is_htmx()`.
 
 ### Generating `dictionary.js`
-> **REQUIRES** API key
+> **REQUIRES** API key to [Artdata - Taxon List Service](https://api-portal.artdatabanken.se/api-details#api=taxonlistservice&operation=definitions)
 
-Copy `artdata.env.example` to `artdata.env` and edit with your key for [Artdatabanken Taxonomy](https://api-portal.artdatabanken.se/product#product=taxonomy).
+> **NOTE** Do not expect `scripts/update-dictionary.sh` to work, it is outdated. 
 
-> **NOTE** Do not expect `scripts/update-dictionary.sh` to work, it is work-in-progress.
+[`static/dictionary.js`](static/dictionary.js) contains a list used for auto-suggesting taxon names and spell checking. It is provided mostly as a guideline to help users correct obvious mistakes, there is no guarantee that the output will work at [artportalen.se](https://artportalen.se). 
 
-The `dictionary` is a list used for auto-suggesting taxon names and spell checking.
-Functions for fetching and filtering taxon data are in `scripts/species_list.py`.  
+Functions for fetching and filtering taxon data are in [`scripts/species_list.py`](scripts/species_list.py). Some manual labour will be needed if you want to produce a new dictionary file. 
 
 ### Versioning
-Use `scripts/bump-version.sh` to generate CHANGELOG.md and maintain semantic versioning info. 
+> **INFO** This package uses [Semantic Versioning](https://semver.org/). 
+
+Versioning is provided by `hatch`. Use [`scripts/bump-version.sh`](scripts/bump-version.sh) to generate the [`CHANGELOG.md`](CHANGELOG.md).  
 
 ## Test
-TODO.
+There is a simple sanity check in the `tests` folder.
 
 ## Build
 > **REQUIRES** `docker` or `podman` (untested). 
 
-The local `scripts/build.sh` and `scripts/run.sh` accepts an optional `$ENGINE` variable. Default is `docker`.
+> **ARGUMENTS** `env_file`, path to a .env file. Default is `local.env` 
+
+Use [`scripts/build.sh`](scripts/build.sh) to build a container image. See `local.env.example` for configuration options. 
 
 ## Deploy
 > **REQUIRES** `gcloud` (Google Cloud platform CLI) and authentication
 
-This repo is configured to build and push a docker image to the Google Cloud/Artifact registry with a minimal amount of Google lock-in bullshit. See `scripts/gcloud-push.sh`
+> **ENVIRONMENT** Copy [`gcloud.env.example`](gcloud.env.example) to `gcloud.env` and edit to match your life situation. 
+
+This repo is configured to build and push a docker image to the Google Cloud/Artifact registry with a minimal amount of Google lock-in bullshit. 
+
+Use [`scripts/gcloud-push.sh`] to 
 
 > **NOTES** on `gcloud-push.sh`
 > 
-> - Will push to the current branch. YOLO :)
-> - Aborts if the repo is not clean.
-> - A short commit hash will be stored in `templates/githash.txt` and displayed in the footer.
+> - Aborts if the repo is not clean-ish.
 > - The default entrypoint (`server.sh`) runs the server with `--proxy-headers`. The reason is [this](https://www.googlecloudcommunity.com/gc/Serverless/Containerized-FastAPI-app-using-Uvicorn-serving-JS-amp-CSS/m-p/681551).
 > - For the same reason the `WEBSITE_URL` is required at container build time. This hard-codes the `/static` endpoint so it serves https, as the gods intended.   
 

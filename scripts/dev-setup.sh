@@ -1,4 +1,13 @@
 #! /bin/bash
+
+echo
+echo " ********* gpx2artdata dev setup ******** "
+echo " ***                                  *** "
+echo " ***          dude, chill...          *** "
+echo " ***                                  *** "
+echo " ******* e l e k t r o s l ö j d ******** "
+echo
+
 if [ ! -f local.env ] 
 then
     echo " *** no local environment found. creating local.env *** "
