@@ -29,7 +29,6 @@ templates = Jinja2Templates(directory="templates")
 
 
 def root_ctx(request: Request):
-    print(f"***** {request.base_url}")
     return {
         "toast": WEBSITE_HOSTNAME
         and bool(WEBSITE_HOSTNAME not in str(request.base_url)),
