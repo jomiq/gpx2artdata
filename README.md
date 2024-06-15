@@ -6,7 +6,7 @@ Ett lite smidigare verktyg för att importera GPX-filer till [Artportalen](https
 
 På [Artportalen](https://artportalen.se/ImportSighting) kan du rapportera in fynd och observationer genom att klistra in en tabell i ett speciellt format. 
 
-[gpx.skolbacken.com](https://gpx.skolbacken.com) hjälper dig att konvertera dina observationer.
+Med [gpx.skolbacken.com](https://gpx.skolbacken.com) kan du konvertera gpx-filer till detta format och kopiera till urklipp med ett enkelt knapptryck. Dessutom kan du redigera observationerna på ett smidigt sätt, och automatiskt kontrollera att alla artnamn är rättstavade!
 
 Rädda skogen!
 
