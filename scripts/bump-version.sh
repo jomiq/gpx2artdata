@@ -1,7 +1,7 @@
 #! /bin/bash
 BUMP=${1-minor}
 MESSAGE=${2-"No description provided. Deal with it."}
-export EDITOR=${EDITOR-"code"}
+export EDITOR=${EDITOR-"code --wait"}
 
 echo
 echo " ******* gpx2artdata versioning ********* "
@@ -22,9 +22,11 @@ if [ -z "$(git status --untracked-files=no --porcelain)" ]; then
     git-changelog
     
     echo "# Version $VERSION - $(date)\n" > RELEASE.md
+
     echo "Provide a short release description ...."
     $EDITOR RELEASE.md
     echo "Thank you"
+    
     git add CHANGELOG.md RELEASE.md
     git commit --amend --no-edit
     git tag -fa $VERSION -m "$MESSAGE"
