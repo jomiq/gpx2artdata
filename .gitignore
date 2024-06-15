@@ -25,6 +25,7 @@ __pycache__
 
 .venv/
 build
+nogit/
 
 reset.txt
 rows.txt
