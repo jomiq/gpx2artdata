@@ -73,3 +73,34 @@ const getScrollbarWidth = () => {
 const isScrollbarVisible = () => {
   return document.body.scrollHeight > screen.height;
 };
+
+// from https://github.com/RWDevelopment/theme_switch?tab=readme-ov-file
+
+let isLight = true
+const html = document.documentElement
+const switchTheme = document.getElementById('theme_switcher')
+const os_default = '<i class="fa fa-lightbulb-o"></i>'
+const sun = '<i class="fa fa-sun-o"></i>'
+const moon = '<i class="fa fa-moon-o"></i>'
+
+document.addEventListener('DOMContentLoaded', () => {
+  switchTheme.innerHTML = os_default
+  isLight = !window.matchMedia('(prefers-color-scheme: dark)').matches; 
+  html.setAttribute('data-theme', isLight ? "light" : "dark")
+  switchTheme.setAttribute('data-tooltip', isLight ? "ludicrous mode" : "hacker mode")
+})
+
+switchTheme.addEventListener('click', (e)=> {
+  e.preventDefault()
+  isLight = !isLight
+  html.setAttribute('data-theme', isLight? 'light':'dark')
+  switchTheme.innerHTML = isLight? sun : moon
+  switchTheme.setAttribute('data-tooltip', isLight ? "ludicrous mode" : "hacker mode")
+  removeTooltip()
+})
+
+const removeTooltip = (timeInt = 500) => {
+  setTimeout(()=>{
+    switchTheme.blur()
+  },timeInt)
+}

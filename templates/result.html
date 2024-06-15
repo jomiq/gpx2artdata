@@ -4,7 +4,8 @@
     <h1>{{ title }}</h1>
     <hr />
     {% if rows %}
-    <h3>{{ n_rows }} observation{% if n_rows != 1 %}er{% endif %}</h3>
+    <h3 id="row-count" total_rows="{{ n_rows }}">{{ n_rows }} observation{% if n_rows != 1 %}er{% endif %}</h3>
+    
     {% endif %}
     {% if error %}
     <h1><i class="fa fa-times-circle error" ></i></h1>
@@ -20,13 +21,12 @@
   
   {% if rows %}
   <article>
+    <div class="info"><i class="secondary outline fa fa-info-circle" data-target="edit-help" onclick="toggleModal(event)"></i></div>
     <section>
-      <h2>3. Redigera och välj rader  <small>
-        <button class="outline" data-target="modal-help" onclick="toggleModal(event)"><i class="fa fa-info-circle"></i>  Info</button></h2>
-      </small>
+      <h2>3. Redigera och välj rader  <i class="fa fa-edit"></i></h2>
     </section>
     <section>
-      <h2>4. <i class="fa fa-hand-o-right"></i>  <button id="copy" class="big-friendly">Kopiera  <i id="copy-symbol" class="fa fa-copy"></i></h2>  
+      <h2>4. <i class="fa fa-hand-o-right"></i>  <button id="copy" class="big-friendly">Kopiera <span class="rows-selected"></span>  <i class="fa fa-copy"></i></h2>  
     </section>
     <section id="step-go-to-artporalen" class="hidden">
       <h2 >5. Gå till <a id="ap-link" href="https://artportalen.se/ImportSighting" target="_blank">Artportalen</a>  <i class="fa fa fa-external-link"></i></h2>

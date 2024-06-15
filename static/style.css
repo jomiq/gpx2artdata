@@ -23,8 +23,8 @@ tbody tr.disabled {
 
 tbody tr:hover {
   td input.toggle {
-      opacity: 100%;
-    }
+    opacity: 100%;
+  }
   td:not(.control) {
     background-color: var(--pico-text-selection-color);
   }
@@ -34,7 +34,7 @@ tbody tr td input.toggle:focus {
   opacity: 100%;
 }
 
-.danger, 
+.danger,
 td:has(input:invalid) {
   border-bottom: 3px solid var(--pico-del-color);
 }
@@ -46,6 +46,10 @@ td:has(input:invalid) {
 button.big-friendly {
   padding-inline: 2rem;
   font-size: xx-large;
+}
+
+footer {
+  text-align: right;
 }
 
 td input:not([type="checkbox"], [type="radio"]) {
@@ -89,3 +93,19 @@ input.comment {
   display: none;
   transition: all 0.2s linear;
 }
+
+
+div.info {
+  text-align: right;
+  :hover {
+    color: var(--pico-form-element-valid-focus-color);
+  }
+}
+
+dialog article header {
+  text-align: right;
+  i:hover {
+    color: var(--pico-del-color);
+  }
+}
+

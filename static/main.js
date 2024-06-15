@@ -1,6 +1,4 @@
-const COPY_SUCCESS_INNERHTML =
-  'Kopierat!  <i style="color: var(--pico-form-element-valid-focus-color);" id="copy-symbol" class="fa fa-check-circle"></i>';
-var focus_listener = false;
+COPY_SUCCESS_INNERHTML = '<span class="rows-selected"></span> kopierade!  <i class="fa fa-copy">'
 
 function get_table_heading_text() {
   let cells = document.querySelectorAll("#data thead tr th:not(.control)");
@@ -17,7 +15,7 @@ function get_table_rows() {
 
 function get_row_text(tr) {
   const cells = tr.querySelectorAll("input:not(.toggle)");
-  let res = [];
+  res = [];
   cells.forEach((c) => {
     val = c.value.trim();
     if (c.classList.contains("accuracy")) {
@@ -29,9 +27,9 @@ function get_row_text(tr) {
 }
 
 function get_table_text() {
-  let res = [get_table_heading_text()];
+  res = [get_table_heading_text()];
 
-  let rows = get_table_rows();
+  rows = get_table_rows();
   rows.forEach((row) => {
     res.push(get_row_text(row));
   });
@@ -66,7 +64,22 @@ function init_results() {
     return;
   }
 
+  const row_count = document.getElementById("row-count");
   const species_inputs = document.querySelectorAll("input.species");
+  const copy_button = document.getElementById("copy");
+  const all_inputs = document.querySelectorAll("#data input");
+  const toggles = document.querySelectorAll(".toggle");
+  const ap_link = document.getElementById("ap-link");
+  
+  var rows_selected = row_count.getAttribute("total_rows");
+  update_rows_selected();
+  function update_rows_selected() {
+    elements = document.querySelectorAll(".rows-selected");
+    elements.forEach((el) => {
+      el.innerHTML = `${rows_selected} observation${rows_selected != 1 ? "er" : ""}`;
+    });
+  }
+
   species_inputs.forEach((el) => {
     validate_species(el);
     el.addEventListener("input", (e) => {
@@ -74,50 +87,54 @@ function init_results() {
     });
   });
 
-  const copy_button = document.getElementById("copy");
-  if (copy_button != null) {
-    copy_button.setAttribute("init_innerHTML", copy_button.innerHTML);
-    copy_button.addEventListener("click", (e) => {
-      copy_button.setAttribute("current_text", get_table_text());
-      navigator.clipboard.writeText(copy_button.getAttribute("current_text"));
-      copy_button.classList.add("secondary");
-      copy_button.innerHTML = COPY_SUCCESS_INNERHTML;
-      let goto_artportalen_step = document.querySelector(
-        "#step-go-to-artporalen"
-      );
-      if (goto_artportalen_step != null) {
-        goto_artportalen_step.classList.remove("hidden");
-      }
-    });
-  }
+  copy_button.setAttribute("init_innerHTML", copy_button.innerHTML);
+  copy_button.addEventListener("click", (e) => {
+    var text = get_table_text();
+    copy_button.setAttribute("copied", true);
+    navigator.clipboard.writeText(text);
+    copy_button.classList.add("secondary");
+    copy_button.innerHTML = COPY_SUCCESS_INNERHTML;
+    var goto_artportalen_step = document.querySelector(
+      "#step-go-to-artporalen"
+    );
+    update_rows_selected();
+    if (goto_artportalen_step != null) {
+      goto_artportalen_step.classList.remove("hidden");
+    }
+  });
+
 
   function reset_copy_button() {
-    if (copy_button.hasAttribute("current_text")) {
+    if (copy_button.hasAttribute("copied")) {
+      copy_button.setAttribute("copied", false);
       copy_button.classList.remove("secondary");
       copy_button.innerHTML = copy_button.getAttribute("init_innerHTML");
+      update_rows_selected();
     }
   }
 
-  const all_inputs = document.querySelectorAll("#data input");
   all_inputs.forEach((el) => {
     el.addEventListener("input", (e) => {
       reset_copy_button();
     });
   });
 
-  const toggles = document.querySelectorAll(".toggle");
+  
   toggles.forEach((button) => {
-    button.addEventListener("input", (e) => {
+    button.addEventListener("change", (e) => {
       var el = e.target;
+      
       if (el.checked) {
         el.parentNode.parentNode.classList.remove("disabled");
+        rows_selected ++;
       } else {
         el.parentNode.parentNode.classList.add("disabled");
+        rows_selected --;
       }
+      update_rows_selected();
     });
   });
 
-  const ap_link = document.getElementById("ap-link");
   if (ap_link != null) {
     ap_link.addEventListener("click", (e) => {
       document.getElementById("step-easter-egg").classList.remove("hidden");

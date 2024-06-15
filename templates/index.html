@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="sv">
   <head>
+
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark" />
     <title>{% if title %}{{ title }} - {% endif %}gpx2artdata</title>
     <link rel="icon" href="{% include 'static_url.txt' %}favicon.png"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.green.min.css" />
@@ -11,20 +14,29 @@
     <script src="https://unpkg.com/htmx.org@1.9.12" integrity="sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2" crossorigin="anonymous"></script>
     <script src="{% include 'static_url.txt' %}dictionary.js"></script>
     <script src="{% include 'static_url.txt' %}main.js"></script>
+
+    <style>
+      #theme_switcher svg {
+        width: var(--pico-font-size);
+        height: var(--pico-font-size);
+        color: var(--contrast);
+      }
+    </style>
   </head>
   <body>
     <main class="container">
       {% if toast %}
       <section style="text-align: center;">
-        <h2>Ny address: <a href="{{ env['PROTOCOL'] }}://{{ env['WEBSITE_HOSTNAME'] }}">{{ env['WEBSITE_HOSTNAME'] }}</a></h2>
+        <h2><i class="fa fa-info-circle"></i>  Ny address: <a href="{{ env['PROTOCOL'] }}://{{ env['WEBSITE_HOSTNAME'] }}">{{ env['WEBSITE_HOSTNAME'] }}</a></h2>
         <p>(sjukt mycket lättare att komma ihåg)</p>
       </section>
       {% endif %}
-      <header style="text-align: center;">
+      <span style="text-align: center;">
           <h1 style="margin-top: 4rem;">Konvertera GPX-fil till ett format som bara artdata begriper</h1>
-      </header>
+      </span>
       <article>
         <form hx-encoding='multipart/form-data' hx-post='/' hx-target="#result", hx-swap="innerHTML swap:1s", hx-indicator="#loading">
+            <div class="info"><i class="fa fa-info-circle" data-target="convert-help" onclick="toggleModal(event)"></i></div>
             <h2>1. Välj en fil och fyll i lokalnamn: </h2>
             <span><i class="fa fa-file-code-o"></i>  .gpx</span>
             <input type="file" id="file" name="file" accept=".gpx,application/gpx,application/gpx+xml" required placeholder="Välj en GPX-fil"/>
@@ -34,7 +46,6 @@
             <input type="number" id="accuracy" value="1" name="accuracy" placeholder="Noggrannhet (m)" required/>
             <h2>2. <i class="fa fa-hand-o-right"></i>  <button class="big-friendly" role="submit">Konvertera!  <i class="fa fa-motorcycle"></i></h2>  
             </button>
-            </h2>
           </form>
       </article>
       <h1 id="loading" class="htmx-indicator" aria-busy="true"></h1>
@@ -43,30 +54,39 @@
         {% include "result.html" %}
       </div>
       
-      <footer style="text-align: right;">
+      <footer>
         <hr>
-        <small>&copy; elektroslöjd 2024 | <a href="https://github.com/jomiq/gpx2artdata"> {{ env['BUILD_VERSION'] }}</a></small>
+        <small>&copy; elektroslöjd 2024 | <a href="https://github.com/jomiq/gpx2artdata"> {{ env['BUILD_VERSION'] }}</a> | <a href="#" id="theme_switcher"></a></small>
       </footer>
     </main>
     <datalist id="species_list">
     </datalist>
-    <dialog id="modal-help">
+    
+    <dialog id="convert-help">
       <article>
         <header>
-          <button
-            aria-label="Close"
-            rel="prev"
-            data-target="modal-help"
-            onclick="toggleModal(event)"
-          ></button>
-          <h3><i class="fa fa-info-circle">  </i>  Info</h3>
+          <i class="fa fa-close" aria-label="Close" rel="prev" data-target="convert-help" onclick="toggleModal(event)"></i>
         </header>
+        <h3><i class="fa fa-info-circle"></i>  Välj fil och fyll information</h3>
         <p>
-          här var det hjälp
+          hjälp ...
         </p>
       </article>
     </dialog>
-    <script src="{% include 'static_url.txt' %}modal.js"></script>
+
+    <dialog id="edit-help">
+      <article>
+        <header>
+          <i class="fa fa-close" aria-label="Close" rel="prev" data-target="edit-help" onclick="toggleModal(event)"></i>
+        </header>
+        <h3><i class="fa fa-info-circle"></i>  Redigera tabellen och kopiera data</h3>
+        <p>
+          hjälp ... 
+        </p>
+      </article>
+    </dialog>
+
+    <script src="{% include 'static_url.txt' %}vendor.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", (e) => {
         init_datalist("species_list", dictionary);
