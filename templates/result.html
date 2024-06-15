@@ -21,13 +21,15 @@
   {% if rows %}
   <article>
     <section>
-      <h2>3. Redigera och välj rader  <i class="fa fa-edit"></i></h2>
+      <h2>3. Redigera och välj rader  <small>
+        <button class="outline" data-target="modal-help" onclick="toggleModal(event)"><i class="fa fa-info-circle"></i>  Info</button></h2>
+      </small>
     </section>
     <section>
       <h2>4. <i class="fa fa-hand-o-right"></i>  <button id="copy" class="big-friendly">Kopiera  <i id="copy-symbol" class="fa fa-copy"></i></h2>  
     </section>
     <section id="step-go-to-artporalen" class="hidden">
-      <h2 >5. Gå till <a id="ap-link" href="https://artportalen.se/ImportSighting" target="_blank">Artportalen</a>  <i class="fa fa-hand-o-right"></i></h2>
+      <h2 >5. Gå till <a id="ap-link" href="https://artportalen.se/ImportSighting" target="_blank">Artportalen</a>  <i class="fa fa fa-external-link"></i></h2>
     </section>
     <section id="step-easter-egg" class="hidden">
       <h2 >6. Rädda skogen!  <i class="fa fa-heart" style="color: var(--pico-del-color)"></i></h2>
@@ -38,7 +40,7 @@
     <table id="data">
       <thead>
         <tr>
-          <th class="unselectable control"><i class="fa fa-eye"></i></th>
+          <th class="unselectable control" style="text-align: center"><i class="fa fa-eye"></i></th>
           {% for heading in headings %}
           <th>{{ heading }}</th>
           {% endfor %}

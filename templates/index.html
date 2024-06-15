@@ -27,7 +27,7 @@
         <form hx-encoding='multipart/form-data' hx-post='/' hx-target="#result", hx-swap="innerHTML swap:1s", hx-indicator="#loading">
             <h2>1. Välj en fil och fyll i lokalnamn: </h2>
             <span><i class="fa fa-file-code-o"></i>  .gpx</span>
-            <input type="file" id="file" name="file" required placeholder="Välj en GPX-fil"/>
+            <input type="file" id="file" name="file" accept=".gpx,application/gpx,application/gpx+xml" required placeholder="Välj en GPX-fil"/>
             <span><i class="fa fa-map-marker"></i>  Lokalnamn</span>
             <input type="text" id="locale" name="locale" placeholder="Lokalnamn" required/>
             <span><i class="fa fa-bullseye"></i>  Noggrannhet (m)</span>
@@ -37,8 +37,8 @@
             </h2>
           </form>
       </article>
-      
       <h1 id="loading" class="htmx-indicator" aria-busy="true"></h1>
+      
       <div id="result">
         {% include "result.html" %}
       </div>
@@ -50,9 +50,26 @@
     </main>
     <datalist id="species_list">
     </datalist>
+    <dialog id="modal-help">
+      <article>
+        <header>
+          <button
+            aria-label="Close"
+            rel="prev"
+            data-target="modal-help"
+            onclick="toggleModal(event)"
+          ></button>
+          <h3><i class="fa fa-info-circle">  </i>  Info</h3>
+        </header>
+        <p>
+          här var det hjälp
+        </p>
+      </article>
+    </dialog>
+    <script src="{% include 'static_url.txt' %}modal.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", (e) => {
-        init_datalist();
+        init_datalist("species_list", dictionary);
       });
     </script>
   </body>

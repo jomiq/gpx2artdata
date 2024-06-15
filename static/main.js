@@ -1,4 +1,5 @@
-const COPY_SUCCESS_INNERHTML = 'Kopierat!  <i style="color: green;" id="copy-symbol" class="fa fa-copy"></i>';
+const COPY_SUCCESS_INNERHTML =
+  'Kopierat!  <i style="color: var(--pico-form-element-valid-focus-color);" id="copy-symbol" class="fa fa-check-circle"></i>';
 var focus_listener = false;
 
 function get_table_heading_text() {
@@ -61,7 +62,7 @@ function validate_species(el) {
 
 function init_results() {
   if (document.querySelector(".error") != null) {
-    console.log(document.querySelector(".error"))
+    console.log(document.querySelector(".error"));
     return;
   }
 
@@ -72,24 +73,26 @@ function init_results() {
       validate_species(e.target);
     });
   });
-      
+
   const copy_button = document.getElementById("copy");
   if (copy_button != null) {
-    copy_button.setAttribute("init_innerHTML", copy_button.innerHTML)
+    copy_button.setAttribute("init_innerHTML", copy_button.innerHTML);
     copy_button.addEventListener("click", (e) => {
       copy_button.setAttribute("current_text", get_table_text());
       navigator.clipboard.writeText(copy_button.getAttribute("current_text"));
       copy_button.classList.add("secondary");
       copy_button.innerHTML = COPY_SUCCESS_INNERHTML;
-      let goto_artportalen_step = document.querySelector("#step-go-to-artporalen");
-      if(goto_artportalen_step != null) {
+      let goto_artportalen_step = document.querySelector(
+        "#step-go-to-artporalen"
+      );
+      if (goto_artportalen_step != null) {
         goto_artportalen_step.classList.remove("hidden");
       }
     });
   }
 
   function reset_copy_button() {
-    if(copy_button.hasAttribute("current_text") && copy_button.getAttribute("current_text") != navigator.clipboard.readText()){
+    if (copy_button.hasAttribute("current_text")) {
       copy_button.classList.remove("secondary");
       copy_button.innerHTML = copy_button.getAttribute("init_innerHTML");
     }
@@ -105,10 +108,11 @@ function init_results() {
   const toggles = document.querySelectorAll(".toggle");
   toggles.forEach((button) => {
     button.addEventListener("input", (e) => {
-      if (e.target.checked) {
-        e.target.parentNode.parentNode.classList.remove("disabled");
+      var el = e.target;
+      if (el.checked) {
+        el.parentNode.parentNode.classList.remove("disabled");
       } else {
-        e.target.parentNode.parentNode.classList.add("disabled");
+        el.parentNode.parentNode.classList.add("disabled");
       }
     });
   });
