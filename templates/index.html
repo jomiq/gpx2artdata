@@ -24,15 +24,17 @@
           <h1 style="margin-top: 4rem;">Konvertera GPX-fil till ett format som bara artdata begriper</h1>
       </header>
       <article>
-          <form hx-encoding='multipart/form-data' hx-post='/' hx-target="#result", hx-swap="innerHTML swap:1s", hx-indicator="#loading">
-              <h2>1. Välj en fil <i class="fa fa-file-code-o"></i></h2>
-              <input type="file" id="file" name="file" required placeholder="Välj en GPX-fil"/>
-              <h2>2. Lokalnamn  <i class="fa fa-map-marker"></i></h2>
-              <input type="text" id="locale" name="locale" placeholder="Lokalnamn" required/>
-              <h2>3. Noggrannhet (m)  <i class="fa fa-bullseye"></i></h2>
-              <input type="number" id="accuracy" value="1" name="accuracy" placeholder="Noggrannhet (m)" required/>
-              <h2>4. Konvertera  <i class="fa fa-motorcycle"></i> </h2>
-              <input type="submit" value="Kör!" />  
+        <form hx-encoding='multipart/form-data' hx-post='/' hx-target="#result", hx-swap="innerHTML swap:1s", hx-indicator="#loading">
+            <h2>1. Välj en fil och fyll i lokalnamn: </h2>
+            <span><i class="fa fa-file-code-o"></i>  .gpx</span>
+            <input type="file" id="file" name="file" required placeholder="Välj en GPX-fil"/>
+            <span><i class="fa fa-map-marker"></i>  Lokalnamn</span>
+            <input type="text" id="locale" name="locale" placeholder="Lokalnamn" required/>
+            <span><i class="fa fa-bullseye"></i>  Noggrannhet (m)</span>
+            <input type="number" id="accuracy" value="1" name="accuracy" placeholder="Noggrannhet (m)" required/>
+            <h2>2. <i class="fa fa-hand-o-right"></i>  <button class="big-friendly" role="submit">Konvertera!  <i class="fa fa-motorcycle"></i></h2>  
+            </button>
+            </h2>
           </form>
       </article>
       
@@ -50,7 +52,7 @@
     </datalist>
     <script>
       document.addEventListener("DOMContentLoaded", (e) => {
-        init_results();
+        init_datalist();
       });
     </script>
   </body>
