@@ -1,0 +1,9 @@
+{% macro pause_gif(base_url) %}
+<div class="lightmode stop" style="background: url({% include 'static_url.txt' %}{{ image }}-light-stop.gif) 0 0 no-repeat;" >
+    <img src="{% include 'static_url.txt' %}{{ image }}-light.gif" />
+</div>
+
+<div class="darkmode stop" style="background: url({% include 'static_url.txt' %}{{ image }}-dark-stop.gif) 0 0 no-repeat;" >
+    <img src="{% include 'static_url.txt' %}{{ image }}-light.gif" />
+</div>
+{% endmacro %}

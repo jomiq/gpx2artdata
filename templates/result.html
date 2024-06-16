@@ -21,19 +21,19 @@
   
   {% if rows %}
   <article>
-    <div class="info"><i class="secondary outline fa fa-info-circle" data-target="edit-help" onclick="toggleModal(event)"></i></div>
-    <section>
+      <section>
       <h2>3. Redigera och välj rader  <i class="fa fa-edit"></i></h2>
     </section>
     <section>
       <h2>4. <i class="fa fa-hand-o-right"></i>  <button id="copy" class="big-friendly">Kopiera <span class="rows-selected"></span>  <i class="fa fa-copy"></i></h2>  
     </section>
-    <section id="step-go-to-artporalen" class="hidden">
+    <section id="step-go-to-artporalen" class="not-yet">
       <h2 >5. Gå till <a id="ap-link" href="https://artportalen.se/ImportSighting" target="_blank">Artportalen</a>  <i class="fa fa fa-external-link"></i></h2>
     </section>
     <section id="step-easter-egg" class="hidden">
       <h2 >6. Rädda skogen!  <i class="fa fa-heart" style="color: var(--pico-del-color)"></i></h2>
     </section>
+    <div class="info-footer"><i href="#edit-help" class="fa fa-question-circle-o" data-target="help-modal" onclick="toggleModal(event)"></i></div>
   </article>
 
   <section class="overflow-auto">

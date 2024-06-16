@@ -1,4 +1,5 @@
-COPY_SUCCESS_INNERHTML = '<span class="rows-selected"></span> kopierade!  <i class="fa fa-copy">'
+COPY_SUCCESS_INNERHTML =
+  '<span class="rows-selected"></span> kopierade!  <i class="fa fa-copy">';
 
 function get_table_heading_text() {
   let cells = document.querySelectorAll("#data thead tr th:not(.control)");
@@ -69,14 +70,19 @@ function init_results() {
   const copy_button = document.getElementById("copy");
   const all_inputs = document.querySelectorAll("#data input");
   const toggles = document.querySelectorAll(".toggle");
+  const goto_artportalen_step = document.querySelector(
+    "#step-go-to-artporalen"
+  );
   const ap_link = document.getElementById("ap-link");
-  
+
   var rows_selected = row_count.getAttribute("total_rows");
   update_rows_selected();
   function update_rows_selected() {
     elements = document.querySelectorAll(".rows-selected");
     elements.forEach((el) => {
-      el.innerHTML = `${rows_selected} observation${rows_selected != 1 ? "er" : ""}`;
+      el.innerHTML = `${rows_selected} observation${
+        rows_selected != 1 ? "er" : ""
+      }`;
     });
   }
 
@@ -94,21 +100,16 @@ function init_results() {
     navigator.clipboard.writeText(text);
     copy_button.classList.add("secondary");
     copy_button.innerHTML = COPY_SUCCESS_INNERHTML;
-    var goto_artportalen_step = document.querySelector(
-      "#step-go-to-artporalen"
-    );
     update_rows_selected();
-    if (goto_artportalen_step != null) {
-      goto_artportalen_step.classList.remove("hidden");
-    }
+    goto_artportalen_step.classList.remove("not-yet");
   });
-
 
   function reset_copy_button() {
     if (copy_button.hasAttribute("copied")) {
       copy_button.setAttribute("copied", false);
       copy_button.classList.remove("secondary");
       copy_button.innerHTML = copy_button.getAttribute("init_innerHTML");
+      goto_artportalen_step.classList.add("not-yet");
       update_rows_selected();
     }
   }
@@ -119,17 +120,16 @@ function init_results() {
     });
   });
 
-  
   toggles.forEach((button) => {
     button.addEventListener("change", (e) => {
       var el = e.target;
-      
+
       if (el.checked) {
         el.parentNode.parentNode.classList.remove("disabled");
-        rows_selected ++;
+        rows_selected++;
       } else {
         el.parentNode.parentNode.classList.add("disabled");
-        rows_selected --;
+        rows_selected--;
       }
       update_rows_selected();
     });

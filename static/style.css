@@ -6,6 +6,18 @@
   user-select: none;
 }
 
+html[data-theme="dark"] {
+  * .lightmode {
+    display: none;
+  }
+}
+
+html[data-theme="light"] {
+  * .darkmode {
+    display: none;
+  }
+}
+
 td.control {
   background-color: transparent;
   border: none;
@@ -37,6 +49,10 @@ tbody tr td input.toggle:focus {
 .danger,
 td:has(input:invalid) {
   border-bottom: 3px solid var(--pico-del-color);
+}
+
+.not-yet {
+  opacity: 50%;
 }
 
 .error {
@@ -74,7 +90,7 @@ input.species {
 }
 
 input.locale {
-  width: 4rem;
+  width: 6rem;
 }
 
 input.accuracy {
@@ -95,17 +111,55 @@ input.comment {
 }
 
 
-div.info {
+div.info-footer {
   text-align: right;
-  :hover {
-    color: var(--pico-form-element-valid-focus-color);
+  font-size: xx-large;
+  i {
+    color: var(--pico-contrast);
   }
 }
 
-dialog article header {
+div.info-footer:hover i {
+  color: var(--pico-ins-color);
+}
+
+dialog article .modal-header {
+  position: sticky;
+  top: 0px;
   text-align: right;
+  font-size: xx-large;
   i:hover {
     color: var(--pico-del-color);
   }
 }
+
+#convert-help, #edit-help {
+  padding-top: 3rem;
+  padding-inline: 2rem;
+  * {
+    text-align: center;
+  }
+}
+
+.pause {
+  font-size: xx-large;
+  position: relative;
+  .overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+}
+
+
+.pause.run .overlay {
+  opacity: 0%;
+}
+
+
+.pause:hover i {
+  color: var(--pico-ins-color);
+}
+
 

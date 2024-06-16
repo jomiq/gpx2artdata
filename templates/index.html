@@ -12,8 +12,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script src="https://unpkg.com/htmx.org@1.9.12" integrity="sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/freezeframe/dist/freezeframe.min.js"></script>
+
     <script src="{% include 'static_url.txt' %}dictionary.js"></script>
     <script src="{% include 'static_url.txt' %}main.js"></script>
+    
 
     <style>
       #theme_switcher svg {
@@ -36,17 +39,16 @@
       </span>
       <article>
         <form hx-encoding='multipart/form-data' hx-post='/' hx-target="#result", hx-swap="innerHTML swap:1s", hx-indicator="#loading">
-            <div class="info"><i class="fa fa-info-circle" data-target="convert-help" onclick="toggleModal(event)"></i></div>
-            <h2>1. Välj en fil och fyll i lokalnamn: </h2>
-            <span><i class="fa fa-file-code-o"></i>  .gpx</span>
-            <input type="file" id="file" name="file" accept=".gpx,application/gpx,application/gpx+xml" required placeholder="Välj en GPX-fil"/>
-            <span><i class="fa fa-map-marker"></i>  Lokalnamn</span>
-            <input type="text" id="locale" name="locale" placeholder="Lokalnamn" required/>
-            <span><i class="fa fa-bullseye"></i>  Noggrannhet (m)</span>
-            <input type="number" id="accuracy" value="1" name="accuracy" placeholder="Noggrannhet (m)" required/>
-            <h2>2. <i class="fa fa-hand-o-right"></i>  <button class="big-friendly" role="submit">Konvertera!  <i class="fa fa-motorcycle"></i></h2>  
-            </button>
+          <h2>1. Välj en fil och fyll i lokalnamn: </h2>
+          <span><i class="fa fa-file-code-o"></i>  .gpx</span>
+          <input type="file" id="file" name="file" accept=".gpx,application/gpx,application/gpx+xml" required placeholder="Välj en GPX-fil"/>
+          <span><i class="fa fa-map-marker"></i>  Lokalnamn</span>
+          <input type="text" id="locale" name="locale" placeholder="Lokalnamn" required/>
+          <span><i class="fa fa-bullseye"></i>  Noggrannhet (m)</span>
+          <input type="number" id="accuracy" value="1" name="accuracy" placeholder="Noggrannhet (m)" required/>
+          <h2>2. <i class="fa fa-hand-o-right"></i>  <button class="big-friendly" role="submit">Konvertera!  <i class="fa fa-motorcycle"></i></h2></button>
           </form>
+          <div class="info-footer"><i href="#convert-help" class="fa fa-question-circle-o" data-target="help-modal" onclick="toggleModal(event)"></i></div>
       </article>
       <h1 id="loading" class="htmx-indicator" aria-busy="true"></h1>
       
@@ -62,34 +64,28 @@
     <datalist id="species_list">
     </datalist>
     
-    <dialog id="convert-help">
+    <dialog id="help-modal">
       <article>
-        <header>
-          <i class="fa fa-close" aria-label="Close" rel="prev" data-target="convert-help" onclick="toggleModal(event)"></i>
-        </header>
-        <h3><i class="fa fa-info-circle"></i>  Välj fil och fyll information</h3>
-        <p>
-          hjälp ...
-        </p>
+        <div class="modal-header">
+          <i class="fa fa-times-circle" aria-label="Close" rel="prev" data-target="help-modal" onclick="toggleModal(event)"></i>
+        </div>
+        {% include "help.html" %}
       </article>
     </dialog>
 
-    <dialog id="edit-help">
-      <article>
-        <header>
-          <i class="fa fa-close" aria-label="Close" rel="prev" data-target="edit-help" onclick="toggleModal(event)"></i>
-        </header>
-        <h3><i class="fa fa-info-circle"></i>  Redigera tabellen och kopiera data</h3>
-        <p>
-          hjälp ... 
-        </p>
-      </article>
-    </dialog>
-
+    
     <script src="{% include 'static_url.txt' %}vendor.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", (e) => {
         init_datalist("species_list", dictionary);
+        pause_gifs = document.querySelectorAll(".pause")
+        if (pause_gifs) {
+          pause_gifs.forEach(el => {
+            el.addEventListener("click", (e) => {
+              el.classList.toggle("run");
+            });
+          });
+        }
       });
     </script>
   </body>

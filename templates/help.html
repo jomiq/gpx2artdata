@@ -1,0 +1,41 @@
+{% macro pause_gif(image) %}
+<div class="pause lightmode">
+  <img class="overlay" src="{% include 'static_url.txt' %}{{ image }}-light-stop.gif" />
+  <img src="{% include 'static_url.txt' %}{{ image }}-light.gif" />
+  <i class="overlay fa fa-play-circle"></i>
+</div>
+<div class="pause darkmode">
+  <img class="overlay" src="{% include 'static_url.txt' %}{{ image }}-dark-stop.gif" />
+  <img src="{% include 'static_url.txt' %}{{ image }}-dark.gif" />
+  <i class="overlay fa fa-play-circle"></i>
+</div>
+{% endmacro %}
+
+<section id="convert-help">
+  <h2><i class="fa fa-file-code-o"></i> Filformat och konvertering</h2>
+  <p></p>
+</section>
+<hr />
+<section id="edit-help">
+  <h2><i class="fa fa-info-circle"></i> Redigera och kopiera data</h2>
+  <hr />
+  <h3><i class="fa fa-edit"></i></h3>
+  <p>Det går att redigera och rätta till fel i tabellen.</p>
+  <p>
+    Felstavade artnamn och andra problem är understrukna med
+    <strong class="danger">röd linje</strong>.
+  </p>
+  {{ pause_gif("tutorial/edit") }}
+  <hr />
+
+  <h3><i class="fa fa-eye"></i></h3>
+  <p>Välj bort oönskade rader med knapparna i första kolumnen.</p>
+  {{ pause_gif("tutorial/select") }}
+  <hr />
+
+  <h3><i class="fa fa-copy"></i></h3>
+  <p>Kopiera texten genom att trycka på knappen.</p>
+  <p>Om du ändrar något måste du kopiera igen.</p>
+  {{ pause_gif("tutorial/copy") }}
+  <hr />
+</section>

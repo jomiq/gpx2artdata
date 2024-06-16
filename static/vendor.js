@@ -17,8 +17,14 @@ let visibleModal = null;
 const toggleModal = (event) => {
   event.preventDefault();
   const modal = document.getElementById(event.currentTarget.dataset.target);
+  
   if (!modal) return;
   modal && (modal.open ? closeModal(modal) : openModal(modal));
+  
+  const section = event.target.getAttribute("href");
+  if(!section) return;
+  document.querySelector(section).scrollIntoView();
+
 };
 
 // Open modal
@@ -74,7 +80,7 @@ const isScrollbarVisible = () => {
   return document.body.scrollHeight > screen.height;
 };
 
-// from https://github.com/RWDevelopment/theme_switch?tab=readme-ov-file
+// Theme-switcher courtesy of https://github.com/RWDevelopment/theme_switch
 
 let isLight = true
 const html = document.documentElement
