@@ -29,6 +29,7 @@ dependencies = ["gpxpy", "lxml"]
 [project.optional-dependencies]
 server = ["fastapi", "gpxpy", "jinja2"]
 dev = ["gpx2artdata[server]", "ruff", "pytest", "pre-commit", "hatch", "git-changelog"]
+extra = ["gpx2artdata[server]", "pillow"]
 
 [project.urls]
 Documentation = "https://github.com/jomiq/gpx2artdata#readme"
