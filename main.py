@@ -12,7 +12,9 @@ PRODUCTION = os.environ.get("PRODUCTION", "True").lower() not in ["false"]
 PROTOCOL = os.environ.get("PROTOCOL", "http")
 WEBSITE_HOSTNAME = os.environ.get("WEBSITE_HOSTNAME", False)
 STATIC_URL = os.environ.get("STATIC_URL", False)
-BUILD_VERSION = os.environ.get("BUILD_VERSION", "dev")
+BUILD_VERSION = (
+    os.environ.get("BUILD_VERSION", "none") + f"{'' if PRODUCTION else '-dev'}"
+)
 
 if PRODUCTION:
     PROTOCOL = "https"

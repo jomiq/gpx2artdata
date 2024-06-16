@@ -14,7 +14,7 @@ BUILD_VERSION="$(git describe --exact-match --tags HEAD)"
 if [ "$BUILD_VERSION" == "" ]; then
   BUILD_VERSION="$(git branch --show-current)-$(git rev-parse --short HEAD)" 
   if [ "$(git status --untracked-files=no --porcelain)" ]; then 
-    BUILD_VERSION="$BUILD_VERSION-dev"
+    BUILD_VERSION="$BUILD_VERSION-custom"
   fi
 else
   echo "*** RELEASE BUILD ***"
