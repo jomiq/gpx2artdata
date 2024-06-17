@@ -40,7 +40,7 @@
             <i class="fa fa-long-arrow-right"></i>
             <img class="lightmode" src="{% include 'static_url.txt' %}slu-light.png">
             <img class="darkmode" src="{% include 'static_url.txt' %}slu-dark.png">
-            <span class="disclamer" style="border-bottom: none" data-tooltip="Not affiliated with SLU" data-placement="left">*</span>
+            <span class="disclaimer" style="border-bottom: none" data-tooltip="Not affiliated with SLU" data-placement="left">*</span>
           </h1>
           <p>Konvertera GPX-filer till ett format som bara artdata begriper</p>
         </div>
@@ -63,11 +63,10 @@
         {% include "result.html" %}
       </div>
       
+      <div style="text-align: left; font-size: 0.8rem"><small class="disclaimer">*) Not affiliated with SLU</small>
       <footer>
         <hr>
         <small>&copy; MIT elektroslöjd 2024 | <a href="https://github.com/jomiq/gpx2artdata"> {{ env['BUILD_VERSION'] }}</a> | <a href="#" id="theme_switcher"></a></small>
-        <br />
-        <div style="text-align: left; font-size: 0.8rem"><small class="disclamer">*) Not affiliated with SLU</small>
       </footer>
     </main>
     <datalist id="species_list">

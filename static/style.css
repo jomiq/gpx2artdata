@@ -163,11 +163,11 @@ dialog article .modal-header {
   color: var(--pico-ins-color);
 }
 
-.disclamer {
+.disclaimer {
   opacity: 45%;
 }
 
-.disclamer:hover {
+.disclaimer:hover {
   opacity: 100%
 }
 
