@@ -1,6 +1,7 @@
-# Version v2.0.0 - Mon Jun 17 07:21:46 PM CEST 2024
+# Version v2.0.1 - Mon Jun 17 08:14:33 PM CEST 2024
 
-- Förbättrat utseende
-- Laggt till instruktioner
+- Updaterat utseende
+- Funkar bättre på mobiler och pekskärmar
+- Lagt till instruktioner
 - Fixat buggar
 - Skapat buggar

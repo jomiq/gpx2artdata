@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 <!-- insertion marker -->
+## [v2.0.1](https://github.com/jomiq/gpx2artdata/releases/tag/v2.0.1) - 2024-06-17
+
+<small>[Compare with v2.0.0](https://github.com/jomiq/gpx2artdata/compare/v2.0.0...v2.0.1)</small>
+
+### Fixed
+
+- fix: better hide video control on mobile ([861547c](https://github.com/jomiq/gpx2artdata/commit/861547cb81f257262c38716166b270bfdd18ba8f) by Jon Mihkkal Inga).
+
+### Changed
+
+- changed: don't overwrite RELEASE.md on version bump ([88a8316](https://github.com/jomiq/gpx2artdata/commit/88a83163213ef3bd6099479756086a35dc1744bd) by Jon Mihkkal Inga).
+
 ## [v2.0.0](https://github.com/jomiq/gpx2artdata/releases/tag/v2.0.0) - 2024-06-17
 
 <small>[Compare with v1.1.0](https://github.com/jomiq/gpx2artdata/compare/v1.1.0...v2.0.0)</small>
