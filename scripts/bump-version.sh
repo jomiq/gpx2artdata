@@ -21,7 +21,7 @@ if [ -z "$(git status --untracked-files=no --porcelain)" ]; then
     git tag $VERSION -m "$MESSAGE"
     git-changelog
     
-    echo "# Version $VERSION - $(date)\n" > RELEASE.md
+    echo -e "# Version $VERSION - $(date)\n\n$(cat RELEASE.md)" > RELEASE.md
 
     echo "Provide a short release description ...."
     $EDITOR RELEASE.md
