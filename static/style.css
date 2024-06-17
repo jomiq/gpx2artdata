@@ -144,6 +144,9 @@ dialog article .modal-header {
 .video-container {
   font-size: 4rem;
   position: relative;
+  video {
+    max-width: 100%;
+  }
   .overlay {
     position: absolute;
     top: 50%;
@@ -160,4 +163,11 @@ dialog article .modal-header {
   color: var(--pico-ins-color);
 }
 
+.disclamer {
+  opacity: 45%;
+}
+
+.disclamer:hover {
+  opacity: 100%
+}
 
