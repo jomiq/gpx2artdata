@@ -1,14 +1,8 @@
 {% macro tutorial_video(name) %}
-<div class="video-container darkmode">
+<div class="video-container">
   <video paused loop>
-    <source src="{% include 'static_url.txt' %}{{ name }}-dark.webm" type="video/webm">
-    <img src="{% include 'static_url.txt' %}{{ name }}-dark.gif" />
-  </video>
-  <i class="overlay fa fa-play-circle"></i>
-</div>
-<div class="video-container lightmode">
-  <video paused loop>
-    <source src="{% include 'static_url.txt' %}{{ name }}-light.webm" type="video/webm">
+    <source srcset="{% include 'static_url.txt' %}{{ name }}-light.webm" type="video/webm">
+    <source srcset="{% include 'static_url.txt' %}{{ name }}-light.mp4" type="video/mp4">
     <img src="{% include 'static_url.txt' %}{{ name }}-light.gif" />
   </video>
   <i class="overlay fa fa-play-circle"></i>
