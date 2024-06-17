@@ -1,9 +1,9 @@
 COPY_SUCCESS_INNERHTML =
   '<span class="rows-selected"></span> kopierade!  <i class="fa fa-copy">';
 
-function get_table_heading_text() {
-  let cells = document.querySelectorAll("#data thead tr th:not(.control)");
-  let res = [];
+function get_table_heading_text(el) {
+  const cells = document.querySelectorAll("#data thead tr th:not(.control)");
+  var res = [];
   cells.forEach((c) => {
     res.push(c.innerHTML);
   });
@@ -16,7 +16,7 @@ function get_table_rows() {
 
 function get_row_text(tr) {
   const cells = tr.querySelectorAll("input:not(.toggle)");
-  res = [];
+  var res = [];
   cells.forEach((c) => {
     val = c.value.trim();
     if (c.classList.contains("accuracy")) {
@@ -28,9 +28,9 @@ function get_row_text(tr) {
 }
 
 function get_table_text() {
-  res = [get_table_heading_text()];
+  var res = [get_table_heading_text()];
 
-  rows = get_table_rows();
+  var rows = get_table_rows();
   rows.forEach((row) => {
     res.push(get_row_text(row));
   });
@@ -95,9 +95,9 @@ function init_results() {
 
   copy_button.setAttribute("init_innerHTML", copy_button.innerHTML);
   copy_button.addEventListener("click", (e) => {
-    var text = get_table_text();
+    var t = get_table_text()
     copy_button.setAttribute("copied", true);
-    navigator.clipboard.writeText(text);
+    navigator.clipboard.writeText(t);
     copy_button.classList.add("secondary");
     copy_button.innerHTML = COPY_SUCCESS_INNERHTML;
     update_rows_selected();
