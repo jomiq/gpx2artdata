@@ -34,9 +34,15 @@
         <p>(sjukt mycket lättare att komma ihåg)</p>
       </section>
       {% endif %}
-      <span style="text-align: center;">
-          <h1 style="margin-top: 4rem;">Konvertera GPX-fil till ett format som bara artdata begriper</h1>
-      </span>
+      <div style="text-align: center; margin-bottom: 2rem">
+          <h1 style="font-size: 4rem;">
+            <i class="fa fa-file-code-o"></i>
+            <i class="fa fa-long-arrow-right"></i>
+            <img class="lightmode" src="{% include 'static_url.txt' %}slu-light.png">
+            <img class="darkmode" src="{% include 'static_url.txt' %}slu-dark.png">*
+          </h1>
+          <p>Konvertera GPX-filer till ett format som bara artdata begriper</p>
+        </div>
       <article>
         <form hx-encoding='multipart/form-data' hx-post='/' hx-target="#result", hx-swap="innerHTML swap:1s", hx-indicator="#loading">
           <h2>1. Välj en fil och fyll i lokalnamn: </h2>
@@ -59,6 +65,8 @@
       <footer>
         <hr>
         <small>&copy; MIT elektroslöjd 2024 | <a href="https://github.com/jomiq/gpx2artdata"> {{ env['BUILD_VERSION'] }}</a> | <a href="#" id="theme_switcher"></a></small>
+        <br />
+        <small style="opacity: 50%; font-size: 0.5rem">* Not affiliated with SLU</small>
       </footer>
     </main>
     <datalist id="species_list">
