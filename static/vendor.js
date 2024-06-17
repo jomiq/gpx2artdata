@@ -131,6 +131,7 @@ function toggle_video(el) {
     overlay.classList.remove("fa-pause-circle");
     overlay.classList.add("fa-play-circle");
   }
+  el.blur()
 }
 
 function init_videos() {
