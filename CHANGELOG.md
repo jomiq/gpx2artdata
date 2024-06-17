@@ -6,6 +6,36 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 <!-- insertion marker -->
+## [v2.0.0](https://github.com/jomiq/gpx2artdata/releases/tag/v2.0.0) - 2024-06-17
+
+<small>[Compare with v1.1.0](https://github.com/jomiq/gpx2artdata/compare/v1.1.0...v2.0.0)</small>
+
+### Added
+
+- added: stolen branding and disclaimer ([c5b5e00](https://github.com/jomiq/gpx2artdata/commit/c5b5e00c5dfb07bfde540ad9fd3dc04a4d386fd8) by Jon Mihkkal Inga).
+- added "build pipeline" for assets ([9aa5b15](https://github.com/jomiq/gpx2artdata/commit/9aa5b15604929a63b015ab82a44a54defebca834) by Jon Mihkkal Inga).
+- added helper script for dealing with gifs ([31aa394](https://github.com/jomiq/gpx2artdata/commit/31aa394af143b5947afe936004b691ff9a21bddd) by Jon Mihkkal Inga).
+- added: release notes and generate requirements.txt on version bump ([f6dc71c](https://github.com/jomiq/gpx2artdata/commit/f6dc71c2b4449581142d69d8cef9672a0273102d) by Jon Mihkkal Inga).
+- add requirements.txt ([a4ae548](https://github.com/jomiq/gpx2artdata/commit/a4ae5489f6b80a1901c0510e8572b24bd1cf45be) by Jon Mihkkal Inga).
+- added: theme switcher, row count to copy button, info/help modals ([74190ea](https://github.com/jomiq/gpx2artdata/commit/74190ea94433d90dd6d78544ac89a79f1ed5e962) by Jon Mihkkal Inga).
+- Added a modal for displaying help ([2c5b152](https://github.com/jomiq/gpx2artdata/commit/2c5b1528ac1448a3390c6b160c2358d882ee748c) by Jon Mihkkal Inga).
+
+### Fixed
+
+- fix hoisting problems ([8f1d755](https://github.com/jomiq/gpx2artdata/commit/8f1d7551f3038637a03d7cd6fb1639bbb7907fff) by Jon Mihkkal Inga).
+- Fix: "logging error", the port  should not be str ([7b9e9d2](https://github.com/jomiq/gpx2artdata/commit/7b9e9d2ea565f2ef5cae6fc9720da7f48143dc70) by Jon Mihkkal Inga).
+- Fix: container always running in production mode ([b210180](https://github.com/jomiq/gpx2artdata/commit/b210180510322d7974abedb9ed1bc7315f9cc418) by Jon Mihkkal Inga).
+
+### Changed
+
+- Changed: logic for production and https mode. Default container build is now production ([4a6a707](https://github.com/jomiq/gpx2artdata/commit/4a6a70757c1511593efe659760710c37a8eaca2b) by Jon Mihkkal Inga).
+
+### Removed
+
+- remove mp4 ([f318711](https://github.com/jomiq/gpx2artdata/commit/f318711c67ccd4cbe49a1267ee290ab56c9a1158) by Jon Mihkkal Inga).
+- remove unused file ([779598e](https://github.com/jomiq/gpx2artdata/commit/779598eef606eeada78262f3ce32105d3a90f7a2) by Jon Mihkkal Inga).
+- remove debug message ([c3259bc](https://github.com/jomiq/gpx2artdata/commit/c3259bcc7fb98f0352c348a99068cd55090392b8) by Jon Mihkkal Inga).
+
 ## [v1.1.0](https://github.com/jomiq/gpx2artdata/releases/tag/v1.1.0) - 2024-06-13
 
 <small>[Compare with v1.0.3](https://github.com/jomiq/gpx2artdata/compare/v1.0.3...v1.1.0)</small>
