@@ -13,5 +13,5 @@
 
 ## Stretch goals
 - ~~Changelog generation~~
-- Run pip freeze and record requirements on version bump.
-- Create RELEASENOTES.md
+- ~~Run pip freeze and record requirements on version bump.~~
+- ~~Create RELEASENOTES.md~~
