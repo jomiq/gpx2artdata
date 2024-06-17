@@ -23,11 +23,14 @@ if [ -z "$(git status --untracked-files=no --porcelain)" ]; then
     
     echo -e "# Version $VERSION - $(date)\n\n$(cat RELEASE.md)" > RELEASE.md
 
-    echo "Provide a short release description ...."
+    echo "Provide a short release description ..."
     $EDITOR RELEASE.md
     echo "Thank you"
     
-    git add CHANGELOG.md RELEASE.md
+    echo "# $VERSION" > requirements.txt
+    pip freeze >> requirements.txt
+
+    git add CHANGELOG.md RELEASE.md requirements.txt
     git commit --amend --no-edit
     git tag -fa $VERSION -m "$MESSAGE"
 
