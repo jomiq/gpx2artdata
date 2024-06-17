@@ -11,13 +11,54 @@
 </div>
 {% endmacro %}
 
+{% macro tutorial_video(name) %}
+<div class="video-container darkmode">
+  <video paused loop>
+    <source src="{% include 'static_url.txt' %}{{ name }}-dark.mp4" type="video/mp4">
+    <source src="{% include 'static_url.txt' %}{{ name }}-dark.webm" type="video/webm">
+    <img src="{% include 'static_url.txt' %}{{ name }}-dark.gif" />
+  </video>
+  <i class="overlay fa fa-play-circle"></i>
+</div>
+<div class="video-container lightmode">
+  <video paused loop>
+    <source src="{% include 'static_url.txt' %}{{ name }}-light.mp4" type="video/mp4">
+    <source src="{% include 'static_url.txt' %}{{ name }}-light.webm" type="video/webm">
+    <img src="{% include 'static_url.txt' %}{{ name }}-light.gif" />
+  </video>
+  <i class="overlay fa fa-play-circle"></i>
+</div>
+
+{% endmacro %}
+
 <section id="convert-help">
-  <h2><i class="fa fa-file-code-o"></i> Filformat och konvertering</h2>
-  <p></p>
+  <h2>Info</h2>
+  <hr/>
+  <h3><i class="fa fa-info-circle"></i></h3>
+  <p><a href="https://en.wikipedia.org/wiki/GPS_Exchange_Format" target="_blank">GPX<i class="fa fa fa-external-link"></i></a> är ett filformat skapat för att överföra geografisk information mellan olika program.</p>
+  <p>Med det här verktyget kan du konvertera gpx-filer till textformatet som används för att <a href="https://artportalen.se/ImportSighting" target="_blank">importa fynd till artportalen<i class="fa fa fa-external-link"></i></a></p>
+  <hr />
+  <h3><i class="fa fa-bug"></i></h3>
+  <h3>Det funkar inte!</h3>
+  <p>
+    Kontrollera dina inställnignar på artportalen <a href="https://artportalen.se/User/EditMyProfile#EditUser_User_CoordinateSystem_csgroup">här<i class="fa fa fa-external-link"></i></a>
+  </p>
+  <p>  
+    I de flesta fall bör du ange <strong>Geographic(WGS84)</strong> i rutan <strong>Koordinatsystem</strong>.
+  </p>
+  <hr />
+  <h3 style="color: var(--pico-del-color)"><i class="fa fa-heart" ></i></h3>
+  <h3>Hjälp till!</h3>
+  <p>
+    <a href="mailto:lilla.molnet+gpx@gmail.com"><i class="fa fa-envelope-o"></i>Kontakta mig</a> om du hittar buggar eller har förslag på förbättringar. 
+  </p>
+  <p>
+    Detta projekt drivs ideellt och all källkod finns på <a href="https://github.com/jomiq/gpx2artdata"><i class="fa fa-git-square"></i>GitHub</a>. 
+  </p>
+  <hr />
 </section>
-<hr />
 <section id="edit-help">
-  <h2><i class="fa fa-info-circle"></i> Redigera och kopiera data</h2>
+  <h2>Redigera och kopiera data</h2>
   <hr />
   <h3><i class="fa fa-edit"></i></h3>
   <p>Det går att redigera och rätta till fel i tabellen.</p>
@@ -25,17 +66,17 @@
     Felstavade artnamn och andra problem är understrukna med
     <strong class="danger">röd linje</strong>.
   </p>
-  {{ pause_gif("tutorial/edit") }}
+  {{ tutorial_video("media/edit") }}
   <hr />
 
   <h3><i class="fa fa-eye"></i></h3>
   <p>Välj bort oönskade rader med knapparna i första kolumnen.</p>
-  {{ pause_gif("tutorial/select") }}
+  {{ tutorial_video("media/select") }}
   <hr />
 
   <h3><i class="fa fa-copy"></i></h3>
   <p>Kopiera texten genom att trycka på knappen.</p>
   <p>Om du ändrar något måste du kopiera igen.</p>
-  {{ pause_gif("tutorial/copy") }}
+  {{ tutorial_video("media/copy") }}
   <hr />
 </section>

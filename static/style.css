@@ -141,7 +141,7 @@ dialog article .modal-header {
   }
 }
 
-.pause {
+.video-container {
   font-size: 4rem;
   position: relative;
   .overlay {
@@ -150,15 +150,13 @@ dialog article .modal-header {
     left: 50%;
     transform: translate(-50%,-50%);
   }
+  .overlay.overlay.fa-pause-circle {
+    opacity: 0%
+  }
 }
 
-
-.pause.run .overlay {
-  opacity: 0%;
-}
-
-
-.pause:hover i {
+.video-container:hover .overlay {
+  opacity: 100%!important;
   color: var(--pico-ins-color);
 }
 

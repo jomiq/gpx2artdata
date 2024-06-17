@@ -17,14 +17,13 @@ let visibleModal = null;
 const toggleModal = (event) => {
   event.preventDefault();
   const modal = document.getElementById(event.currentTarget.dataset.target);
-  
+
   if (!modal) return;
   modal && (modal.open ? closeModal(modal) : openModal(modal));
-  
-  const section = event.target.getAttribute("href");
-  if(!section) return;
-  document.querySelector(section).scrollIntoView();
 
+  const section = event.target.getAttribute("href");
+  if (!section) return;
+  document.querySelector(section).scrollIntoView();
 };
 
 // Open modal
@@ -71,7 +70,8 @@ document.addEventListener("keydown", (event) => {
 
 // Get scrollbar width
 const getScrollbarWidth = () => {
-  const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+  const scrollbarWidth =
+    window.innerWidth - document.documentElement.clientWidth;
   return scrollbarWidth;
 };
 
@@ -82,31 +82,64 @@ const isScrollbarVisible = () => {
 
 // Theme-switcher courtesy of https://github.com/RWDevelopment/theme_switch
 
-let isLight = true
-const html = document.documentElement
-const switchTheme = document.getElementById('theme_switcher')
-const os_default = '<i class="fa fa-lightbulb-o"></i>'
-const sun = '<i class="fa fa-sun-o"></i>'
-const moon = '<i class="fa fa-moon-o"></i>'
+let isLight = true;
+const html = document.documentElement;
+const switchTheme = document.getElementById("theme_switcher");
+const os_default = '<i class="fa fa-lightbulb-o"></i>';
+const sun = '<i class="fa fa-sun-o"></i>';
+const moon = '<i class="fa fa-moon-o"></i>';
 
-document.addEventListener('DOMContentLoaded', () => {
-  switchTheme.innerHTML = os_default
-  isLight = !window.matchMedia('(prefers-color-scheme: dark)').matches; 
-  html.setAttribute('data-theme', isLight ? "light" : "dark")
-  switchTheme.setAttribute('data-tooltip', isLight ? "ludicrous mode" : "hacker mode")
-})
+document.addEventListener("DOMContentLoaded", () => {
+  switchTheme.innerHTML = os_default;
+  isLight = !window.matchMedia("(prefers-color-scheme: dark)").matches;
+  html.setAttribute("data-theme", isLight ? "light" : "dark");
+  switchTheme.setAttribute(
+    "data-tooltip",
+    isLight ? "ludicrous mode" : "hacker mode"
+  );
+});
 
-switchTheme.addEventListener('click', (e)=> {
-  e.preventDefault()
-  isLight = !isLight
-  html.setAttribute('data-theme', isLight? 'light':'dark')
-  switchTheme.innerHTML = isLight? sun : moon
-  switchTheme.setAttribute('data-tooltip', isLight ? "ludicrous mode" : "hacker mode")
-  removeTooltip()
-})
+switchTheme.addEventListener("click", (e) => {
+  e.preventDefault();
+  isLight = !isLight;
+  html.setAttribute("data-theme", isLight ? "light" : "dark");
+  switchTheme.innerHTML = isLight ? sun : moon;
+  switchTheme.setAttribute(
+    "data-tooltip",
+    isLight ? "ludicrous mode" : "hacker mode"
+  );
+  removeTooltip();
+});
 
 const removeTooltip = (timeInt = 500) => {
-  setTimeout(()=>{
-    switchTheme.blur()
-  },timeInt)
+  setTimeout(() => {
+    switchTheme.blur();
+  }, timeInt);
+};
+
+// video-controls
+
+function toggle_video(el) {
+  vid = el.querySelector("video");
+  overlay = el.querySelector("i.overlay");
+  if (vid.paused) {
+    vid.play();
+    overlay.classList.remove("fa-play-circle");
+    overlay.classList.add("fa-pause-circle");
+  } else {
+    vid.pause();
+    overlay.classList.remove("fa-pause-circle");
+    overlay.classList.add("fa-play-circle");
+  }
+}
+
+function init_videos() {
+  video_containers = document.querySelectorAll(".video-container");
+  if (video_containers) {
+    video_containers.forEach((el) => {
+      el.addEventListener("click", (e) => {
+        toggle_video(el);
+      });
+    });
+  }
 }

@@ -58,7 +58,7 @@
       
       <footer>
         <hr>
-        <small>&copy; elektroslöjd 2024 | <a href="https://github.com/jomiq/gpx2artdata"> {{ env['BUILD_VERSION'] }}</a> | <a href="#" id="theme_switcher"></a></small>
+        <small>&copy; MIT elektroslöjd 2024 | <a href="https://github.com/jomiq/gpx2artdata"> {{ env['BUILD_VERSION'] }}</a> | <a href="#" id="theme_switcher"></a></small>
       </footer>
     </main>
     <datalist id="species_list">
@@ -78,14 +78,7 @@
     <script>
       document.addEventListener("DOMContentLoaded", (e) => {
         init_datalist("species_list", dictionary);
-        pause_gifs = document.querySelectorAll(".pause")
-        if (pause_gifs) {
-          pause_gifs.forEach(el => {
-            el.addEventListener("click", (e) => {
-              el.classList.toggle("run");
-            });
-          });
-        }
+        init_videos();
       });
     </script>
   </body>
