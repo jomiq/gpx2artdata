@@ -56,6 +56,10 @@ For development, please use the `[dev]` group and pass the `-e` flag to make the
 ```console
 $ pip install -e .[dev]
 ```
+There are some optional libraries in the `build` dependency group. Install this if you need to work with the assets, for example regenerate the tutorial videos with the [`scripts/build-assets.sh`](scripts/build-assets.sh) script.
+```console
+$ pip install .[build]
+```
 
 ## Develop
 > **REQUIRES** `python` > 3.10, `pip`
