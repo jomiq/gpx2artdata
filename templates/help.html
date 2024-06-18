@@ -1,21 +1,39 @@
 {% macro tutorial_video(name) %}
-<div class="video-container">
-  <video paused loop>
-    <source srcset="{% include 'static_url.txt' %}{{ name }}-light.webm" type="video/webm">
-    <source srcset="{% include 'static_url.txt' %}{{ name }}-light.mp4" type="video/mp4">
-    <img src="{% include 'static_url.txt' %}{{ name }}-light.gif" />
+<div class="video-container lightmode">
+    <video paused loop preload="metadata" onclick="toggle_video(event)">
+      <source src="{% include 'static_url.txt' %}media/{{ name }}-light.webm" type="video/webm">
+      <source src="{% include 'static_url.txt' %}media/{{ name }}-light.mp4" type="video/mp4">
+      <h3>Din webläsare gillar inte video</h3>
+      <a href="{% include 'static_url.txt' %}media/{{ name }}-light.gif" name="Länk till din farfars gamla gif">
+        <img src="{% include 'static_url.txt' %}media/{{ name }}-light-stop.gif" />
+      </a>
+    </video>
+    <i class="overlay fa fa-pause-circle"></i>
+    <i class="overlay fa fa-play-circle"></i>
+</div>
+<div class="video-container darkmode">
+  <video paused loop preload="metadata" onclick="toggle_video(event)">
+    <source src="{% include 'static_url.txt' %}media/{{ name }}-dark.webm" type="video/webm">
+    <source src="{% include 'static_url.txt' %}media/{{ name }}-dark.mp4" type="video/mp4">
+    <h3>Din webläsare gillar inte video</h3>
+    <a href="{% include 'static_url.txt' %}media/{{ name }}-dark.gif" name="Länk till din farfars gamla gif">
+      <img src="{% include 'static_url.txt' %}media/{{ name }}-dark-stop.gif" />
+    </a>
   </video>
+  <i class="overlay fa fa-pause-circle"></i>
   <i class="overlay fa fa-play-circle"></i>
 </div>
 {% endmacro %}
-
 <section id="convert-help">
   <h2>Info</h2>
   <hr/>
   <h3><i class="fa fa-info-circle"></i></h3>
   <p><a href="https://en.wikipedia.org/wiki/GPS_Exchange_Format" target="_blank">GPX<i class="fa fa fa-external-link"></i></a> är ett filformat skapat för att överföra geografisk information mellan olika program.</p>
   <p>Med det här verktyget kan du konvertera gpx-filer till textformatet som används för att <a href="https://artportalen.se/ImportSighting" target="_blank">importa fynd till artportalen <i class="fa fa fa-external-link"></i></a></p>
+  <p><a href="https://www.avenza.com/avenza-maps/" target="_blank">Avenza <i class="fa fa fa-external-link"></i></a> är en schysst app för dig som gillar att inventera, men det går bra att använda GPX-filer från andra applikationer också. Det viktiga är att du sparar dina observationer som "<strong>waypoints</strong>"" och döper dem till artnamnet. </p>
   <hr />
+</section>
+<section id="general-help">
   <h3><i class="fa fa-bug"></i></h3>
   <h3>Det funkar inte!</h3>
   <p>
@@ -44,17 +62,17 @@
     Felstavade artnamn och andra problem är understrukna med
     <strong class="danger">röd linje</strong>.
   </p>
-  {{ tutorial_video("media/edit") }}
+  {{ tutorial_video("edit") }}
   <hr />
 
   <h3><i class="fa fa-eye"></i></h3>
   <p>Välj bort oönskade rader med knapparna i första kolumnen.</p>
-  {{ tutorial_video("media/select") }}
+  {{ tutorial_video("select") }}
   <hr />
 
   <h3><i class="fa fa-copy"></i></h3>
   <p>Kopiera texten genom att trycka på knappen.</p>
   <p>Om du ändrar något måste du kopiera igen.</p>
-  {{ tutorial_video("media/copy") }}
+  {{ tutorial_video("copy") }}
   <hr />
 </section>

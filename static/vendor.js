@@ -119,28 +119,27 @@ const removeTooltip = (timeInt = 500) => {
 
 // video-controls
 
-function toggle_video(el) {
-  vid = el.querySelector("video");
-  overlay = el.querySelector("i.overlay");
-  if (vid.paused) {
+function toggle_video(event) {
+  event.preventDefault();
+  var vid = event.target;
+  if (event.target.paused) {
     vid.play();
-    overlay.classList.remove("fa-play-circle");
-    overlay.classList.add("fa-pause-circle");
   } else {
     vid.pause();
-    overlay.classList.remove("fa-pause-circle");
-    overlay.classList.add("fa-play-circle");
   }
-  el.blur();
 }
 
-function init_videos() {
-  video_containers = document.querySelectorAll(".video-container");
-  if (video_containers) {
-    video_containers.forEach((el) => {
-      el.addEventListener("click", (e) => {
-        toggle_video(el);
-      });
+function init_video_controls() {
+  
+  vids = document.querySelectorAll("video");
+  vids.forEach((vid) => {
+    vid.addEventListener("play", (e) => {
+      console.log(e);
+      e.target.parentNode.classList.add("playing");
     });
-  }
+    vid.addEventListener("pause", (e) => {
+      console.log(e);
+      e.target.parentNode.classList.remove("playing");
+    });
+  });
 }

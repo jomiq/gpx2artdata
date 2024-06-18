@@ -86,8 +86,14 @@
     <script>
       document.addEventListener("DOMContentLoaded", (e) => {
         init_datalist("species_list", dictionary);
-        init_videos();
+        init_video_controls();
+        document.addEventListener("htmx:afterSettle", (e) => {
+          if (e.target.id == "result"){
+            init_results();
+          }
+        });
       });
+      
     </script>
   </body>
 </html>
