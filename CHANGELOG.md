@@ -8,7 +8,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 <!-- insertion marker -->
 ## [v2.1.0](https://github.com/jomiq/gpx2artdata/releases/tag/v2.1.0) - 2024-06-18
 
-<small>[Compare with v2.0.2](https://github.com/jomiq/gpx2artdata/compare/v2.0.2...v2.1.0)</small>
+<small>[Compare with v2.0.3](https://github.com/jomiq/gpx2artdata/compare/v2.0.3...v2.1.0)</small>
+
+### Fixed
+
+- fix: typo ([16a7a45](https://github.com/jomiq/gpx2artdata/commit/16a7a45c9f29c399964624a4457a4eb4b8ceaded) by Jon Mihkkal Inga).
+
+## [v2.0.3](https://github.com/jomiq/gpx2artdata/releases/tag/v2.0.3) - 2024-06-18
+
+<small>[Compare with v2.0.2](https://github.com/jomiq/gpx2artdata/compare/v2.0.2...v2.0.3)</small>
 
 ## [v2.0.2](https://github.com/jomiq/gpx2artdata/releases/tag/v2.0.2) - 2024-06-17
 
