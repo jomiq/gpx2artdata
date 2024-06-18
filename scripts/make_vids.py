@@ -9,7 +9,7 @@ INPUT_DIR = "assets/make_vids/"
 OUTPUT_DIR = "build/media/"
 FORMATS = ["webm", "mp4", "gif"]
 INPUT = [f for f in os.listdir(INPUT_DIR) if f.endswith(".gif")]
-MAKE_STOP_FRAME = False
+MAKE_STOP_FRAME = True
 
 
 def gif_to(filename, formats=FORMATS):
@@ -48,4 +48,4 @@ if __name__ == "__main__":
     except Exception as e:
         print(e)
 
-    Parallel(n_jobs=4)(delayed(gif_to)(f) for f in INPUT)
+    Parallel(n_jobs=os.cpu_count())(delayed(gif_to)(f) for f in INPUT)
