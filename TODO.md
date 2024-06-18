@@ -1,4 +1,4 @@
-# TODOS
+# TODO
 
 ## UI, functions
 - ~~Create a mobile version w/o jazz~~
@@ -6,6 +6,7 @@
 - Restrict filetype
 - ~~Validate form before submit~~
 - WONTFIX ~~Add +line button~~ 
+- implement data-state semantics
 
 ## Depl.
 - ~~Fix hardcoded https resources :facepalm:~~
