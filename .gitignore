@@ -23,6 +23,7 @@ __pycache__
 *.sqlite
 *.env
 
+.vscode/
 .venv/
 build
 nogit/
