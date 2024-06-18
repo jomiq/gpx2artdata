@@ -24,6 +24,7 @@ __pycache__
 *.env
 .vscode7
 
+.vscode/
 .venv/
 build
 nogit/
