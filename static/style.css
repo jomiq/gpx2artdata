@@ -37,6 +37,7 @@ tbody tr:hover {
   td input.toggle {
     opacity: 100%;
   }
+
   td:not(.control) {
     background-color: var(--pico-text-selection-color);
   }
@@ -114,6 +115,7 @@ input.comment {
 div.info-footer {
   text-align: right;
   font-size: xx-large;
+
   i {
     color: var(--pico-contrast);
   }
@@ -128,6 +130,7 @@ dialog article .modal-header {
   top: 0px;
   text-align: right;
   font-size: xx-large;
+
   i:hover {
     color: var(--pico-del-color);
   }
@@ -136,6 +139,7 @@ dialog article .modal-header {
 dialog article section {
   padding-top: 3rem;
   padding-inline: 2rem;
+
   * {
     text-align: center;
   }
@@ -144,41 +148,50 @@ dialog article section {
 .video-container {
   font-size: 4rem;
   position: relative;
+
   video {
     max-width: 100%;
   }
+
   .overlay {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
-  }
-
-  i {
+    transform: translate(-50%, -50%);
     pointer-events: none;
-  }
-
-  i.fa-pause-circle {
     display: none;
   }
-
 }
-.video-container.playing {
-  .overlay {
-    opacity: 0%;
-  }
-  i.fa-pause-circle {
+
+.video-container[data-state=loading] {
+  #loading {
     display: block;
   }
-  i.fa-play-circle {
-    display: none;
-  }
-
 }
 
-.video-container:hover .overlay {
-  opacity: 100%!important; 
-  color: var(--pico-ins-color);
+.video-container[data-state=ready] {
+  #play { display: block; }
+}
+
+.video-container[data-state=playing] {
+  .overlay { opacity: 0%; }
+  #pause { display: block; }
+}
+
+.video-container[data-state=pause] {
+  #play { display: block; }
+}
+
+.video-container[data-state=error] {
+  color: var(--pico-del-color)!important;
+  #error { display: block; }
+}
+
+@media (pointer: fine) {
+  .video-container:hover .overlay {
+    color: var(--pico-ins-color);
+    opacity: 100% !important;
+  }
 }
 
 .disclaimer {
@@ -188,4 +201,3 @@ dialog article section {
 .disclaimer:hover {
   opacity: 100%
 }
-
