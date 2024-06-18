@@ -94,7 +94,7 @@ input.locale {
 }
 
 input.accuracy {
-  width: 1rem;
+  width: 3rem;
 }
 
 input.date {
@@ -133,7 +133,7 @@ dialog article .modal-header {
   }
 }
 
-#convert-help, #edit-help {
+dialog article section {
   padding-top: 3rem;
   padding-inline: 2rem;
   * {
@@ -153,13 +153,31 @@ dialog article .modal-header {
     left: 50%;
     transform: translate(-50%,-50%);
   }
-  .overlay.overlay.fa-pause-circle {
-    opacity: 0%
+
+  i {
+    pointer-events: none;
   }
+
+  i.fa-pause-circle {
+    display: none;
+  }
+
+}
+.video-container.playing {
+  .overlay {
+    opacity: 0%;
+  }
+  i.fa-pause-circle {
+    display: block;
+  }
+  i.fa-play-circle {
+    display: none;
+  }
+
 }
 
 .video-container:hover .overlay {
-  opacity: 100%!important;
+  opacity: 100%!important; 
   color: var(--pico-ins-color);
 }
 

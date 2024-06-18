@@ -1,0 +1,8 @@
+<div class="video-container" onclick="toggle_video(event)">
+    <video paused loop preload="metadata">
+      <source src="{% include 'static_url.txt' %}media/{{ name }}.webm" type="video/webm">
+      <source src="{% include 'static_url.txt' %}media/{{ name }}.mp4" type="video/mp4">
+      Your browser is weak.
+    </video>
+    <i class="overlay fa fa-play-circle"></i>
+</div>

@@ -141,7 +141,3 @@ function init_results() {
     });
   }
 }
-
-document.addEventListener("htmx:afterSettle", (e) => {
-  init_results();
-});
