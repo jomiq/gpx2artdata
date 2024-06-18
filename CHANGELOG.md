@@ -7,9 +7,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 <!-- insertion marker -->
 
-### Fixed
-
-- fix: typo ([16a7a45](https://github.com/jomiq/gpx2artdata/commit/16a7a45c9f29c399964624a4457a4eb4b8ceaded) by Jon Mihkkal Inga).
 
 ## [v2.0.3](https://github.com/jomiq/gpx2artdata/releases/tag/v2.0.3) - 2024-06-18
 
