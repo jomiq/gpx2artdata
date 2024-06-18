@@ -136,10 +136,6 @@ function init_video_controls() {
       console.log(e);
       e.target.parentNode.dataset.state = "loading";
     });
-    vid.addEventListener("canplay", (e) => {
-      console.log(e);
-      e.target.parentNode.dataset.state = "loading";
-    });
 
     vid.addEventListener("canplay", (e) => {
       console.log(e);
@@ -163,10 +159,13 @@ function init_video_controls() {
       console.log(e);
       e.target.parentNode.dataset.state = "pause";
     });
+    vid.addEventListener("error", (e) => {
+      console.log(e);
+      e.target.parentNode.dataset.state = "error";
+    });
     vid.addEventListener("stalled", (e) => {
       console.log(e);
-      var current_state = e.target.parentNode.dataset.state;
-      e.target.parentNode.dataset.state = current_state == "pause" ? "pause" : "error";
+      e.target.parentNode.dataset.state = "loading";
     });
   });
 }

@@ -164,6 +164,7 @@ dialog article section {
 }
 
 .video-container[data-state=loading] {
+  .overlay { opacity: 50%; }
   #loading {
     display: block;
   }
