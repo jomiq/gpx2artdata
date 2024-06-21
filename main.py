@@ -70,6 +70,9 @@ async def post_convert(
     ctx["title"] = f"{file.filename} - {locale}"
 
     if is_htmx(request):
+        from time import sleep
+
+        sleep(10)
         res = templates.TemplateResponse(
             request=request, name="result.html", context=ctx
         )
