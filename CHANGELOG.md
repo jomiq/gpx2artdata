@@ -6,7 +6,33 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 <!-- insertion marker -->
+## [v2.1.0](https://github.com/jomiq/gpx2artdata/releases/tag/v2.1.0) - 2024-07-02
 
+<small>[Compare with v2.0.4](https://github.com/jomiq/gpx2artdata/compare/v2.0.4...v2.1.0)</small>
+
+### Added
+
+- add .gpx to header ([ac57819](https://github.com/jomiq/gpx2artdata/commit/ac57819c921eaf8dd20cef5b616341210ec82f6b) by jomik).
+- added: data-state implementation for video player ([6fd2318](https://github.com/jomiq/gpx2artdata/commit/6fd23188fa7ec69c1923df3bb208dcd0797cedd6) by jomik).
+
+### Fixed
+
+- fix: add controls to light mode video player ([295e057](https://github.com/jomiq/gpx2artdata/commit/295e0574183bc3fb87591df43a59db7b14effb21) by jomik).
+
+### Removed
+
+- remove unused script ([039b079](https://github.com/jomiq/gpx2artdata/commit/039b079e1a34e18e3c56d961d598132cc85895d9) by Jon Mihkkal Inga).
+- remove --progress argument from build script ([6e71f00](https://github.com/jomiq/gpx2artdata/commit/6e71f00fa7af363ae839bc5bf7f3509436c3a09d) by jomik).
+- remove unused file ([7ccf03d](https://github.com/jomiq/gpx2artdata/commit/7ccf03dff29ecadb9e9d9ccf8fe767785caadb50) by jomik).
+- remove faulty version ([d02c1e3](https://github.com/jomiq/gpx2artdata/commit/d02c1e37bf23fed25de62f73c2e7373121c6bf5f) by Jon Mihkkal Inga).
+
+## [v2.0.4](https://github.com/jomiq/gpx2artdata/releases/tag/v2.0.4) - 2024-06-18
+
+<small>[Compare with v2.0.3](https://github.com/jomiq/gpx2artdata/compare/v2.0.3...v2.0.4)</small>
+
+### Fixed
+
+- fix: typo ([16a7a45](https://github.com/jomiq/gpx2artdata/commit/16a7a45c9f29c399964624a4457a4eb4b8ceaded) by Jon Mihkkal Inga).
 
 ## [v2.0.3](https://github.com/jomiq/gpx2artdata/releases/tag/v2.0.3) - 2024-06-18
 

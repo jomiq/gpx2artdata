@@ -1,6 +1,3 @@
-# Version v2.0.4 - Tue Jun 18 02:58:55 PM CEST 2024
-- Updaterat utseende
-- Funkar bättre på mobiler och pekskärmar
-- Lagt till instruktioner
-- Fixat buggar
-- Skapat buggar
+# Version v2.1.0 - 2024-07-02T17:19:01 CEST
+- data-state semantics for video controls
+- styling fixes
