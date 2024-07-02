@@ -68,6 +68,8 @@ function init_results() {
   const row_count = document.getElementById("row-count");
   const species_inputs = document.querySelectorAll("input.species");
   const copy_button = document.getElementById("copy");
+  const copy_success_symbol = document.getElementById("copy-success-symbol");
+  const copy_please = document.getElementById("copy-please");
   const all_inputs = document.querySelectorAll("#data input");
   const toggles = document.querySelectorAll(".toggle");
   const goto_artportalen_step = document.querySelector(
@@ -99,15 +101,19 @@ function init_results() {
     copy_button.setAttribute("copied", true);
     navigator.clipboard.writeText(t);
     copy_button.classList.add("secondary");
+    copy_success_symbol.classList.remove("hidden");
+    copy_please.classList.add("hidden");
     copy_button.innerHTML = COPY_SUCCESS_INNERHTML;
     update_rows_selected();
     goto_artportalen_step.classList.remove("not-yet");
   });
-
+  
   function reset_copy_button() {
     if (copy_button.hasAttribute("copied")) {
       copy_button.setAttribute("copied", false);
       copy_button.classList.remove("secondary");
+      copy_success_symbol.classList.add("hidden");
+      copy_please.classList.remove("hidden");
       copy_button.innerHTML = copy_button.getAttribute("init_innerHTML");
       goto_artportalen_step.classList.add("not-yet");
       update_rows_selected();

@@ -202,3 +202,7 @@ dialog article section {
 .disclaimer:hover {
   opacity: 100%
 }
+
+.success {
+  color: var(--pico-ins-color);
+}
