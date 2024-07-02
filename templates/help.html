@@ -1,6 +1,6 @@
 {% macro tutorial_video(name) %}
 <div class="video-container lightmode" data-state="ready">
-  <video paused loop preload="metadata" onclick="toggle_video(event)">
+  <video paused preload="metadata" onclick="toggle_video(event)">
     <source src="{% include 'static_url.txt' %}media/{{ name }}-light.webm" type="video/webm">
     <source src="{% include 'static_url.txt' %}media/{{ name }}-light.mp4" type="video/mp4">
     <h3>Din webläsare gillar inte video</h3>
@@ -14,7 +14,7 @@
   <div id="loading" class="overlay" aria-busy="true"></div>
 </div>
 <div class="video-container darkmode" data-state="ready">
-  <video paused loop preload="metadata" onclick="toggle_video(event)">
+  <video paused preload="metadata" onclick="toggle_video(event)">
     <source src="{% include 'static_url.txt' %}media/{{ name }}-dark.webm" type="video/webm">
     <source src="{% include 'static_url.txt' %}media/{{ name }}-dark.mp4" type="video/mp4">
     <h3>Din webläsare gillar inte video</h3>
