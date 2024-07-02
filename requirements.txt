@@ -1,4 +1,4 @@
-# v2.1.0
+# v2.1.1
 annotated-types==0.7.0
 anyio==4.4.0
 appdirs==1.4.4
@@ -14,7 +14,7 @@ fastapi==0.111.0
 fastapi-cli==0.0.4
 filelock==3.15.4
 git-changelog==2.5.2
--e git+https://github.com/jomiq/gpx2artdata.git@295e0574183bc3fb87591df43a59db7b14effb21#egg=gpx2artdata
+-e git+https://github.com/jomiq/gpx2artdata.git@6906df7cc8cdd8b4bcb0566ab29590efd6d85bd0#egg=gpx2artdata
 gpxpy==1.6.2
 h11==0.14.0
 hatch==1.12.0

@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 <!-- insertion marker -->
+## [v2.2.0](https://github.com/jomiq/gpx2artdata/releases/tag/v2.2.0) - 2024-07-02
+
+<small>[Compare with v2.1.0](https://github.com/jomiq/gpx2artdata/compare/v2.1.0...v2.2.0)</small>
+
+### Changed
+
+- changed: don't loop the videos, it is confusing ([6906df7](https://github.com/jomiq/gpx2artdata/commit/6906df7cc8cdd8b4bcb0566ab29590efd6d85bd0) by jomik).
+
 ## [v2.1.0](https://github.com/jomiq/gpx2artdata/releases/tag/v2.1.0) - 2024-07-02
 
 <small>[Compare with v2.0.4](https://github.com/jomiq/gpx2artdata/compare/v2.0.4...v2.1.0)</small>
