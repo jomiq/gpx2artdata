@@ -130,16 +130,42 @@ function toggle_video(event) {
 }
 
 function init_video_controls() {
-  
   vids = document.querySelectorAll("video");
   vids.forEach((vid) => {
+    vid.addEventListener("waiting", (e) => {
+      console.log(e);
+      e.target.parentNode.dataset.state = "loading";
+    });
+
+    vid.addEventListener("canplay", (e) => {
+      console.log(e);
+      e.target.parentNode.dataset.state = "ready";
+    });
+    vid.addEventListener("canplaythrough", (e) => {
+      console.log(e);
+      e.target.parentNode.dataset.state = "ready";
+    });
+    
     vid.addEventListener("play", (e) => {
       console.log(e);
-      e.target.parentNode.classList.add("playing");
+      e.target.parentNode.dataset.state = "playing";
     });
+    vid.addEventListener("playing", (e) => {
+      console.log(e);
+      e.target.parentNode.dataset.state = "playing";
+    });
+    
     vid.addEventListener("pause", (e) => {
       console.log(e);
-      e.target.parentNode.classList.remove("playing");
+      e.target.parentNode.dataset.state = "pause";
+    });
+    vid.addEventListener("error", (e) => {
+      console.log(e);
+      e.target.parentNode.dataset.state = "error";
+    });
+    vid.addEventListener("stalled", (e) => {
+      console.log(e);
+      e.target.parentNode.dataset.state = "loading";
     });
   });
 }
