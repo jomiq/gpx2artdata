@@ -27,7 +27,7 @@ def do_convert(file: IO, locale: str = "", accuracy: int = 1) -> dict:
             "lon": wp.longitude,
             "lat": wp.latitude,
             "date": str(wp.time.date().isoformat()),
-            "comment": "",
+            "comment": str(wp.comment) if wp.comment else "",
         }
         res["rows"].append(data)
 
