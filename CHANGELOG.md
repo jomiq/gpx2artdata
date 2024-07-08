@@ -6,9 +6,21 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 <!-- insertion marker -->
-## [v2.2.0](https://github.com/jomiq/gpx2artdata/releases/tag/v2.2.0) - 2024-07-02
+## [v2.2.0](https://github.com/jomiq/gpx2artdata/releases/tag/v2.2.0) - 2024-07-08
 
-<small>[Compare with v2.1.0](https://github.com/jomiq/gpx2artdata/compare/v2.1.0...v2.2.0)</small>
+<small>[Compare with v2.1.1](https://github.com/jomiq/gpx2artdata/compare/v2.1.1...v2.2.0)</small>
+
+### Fixed
+
+- fix: remove debug delay ::faceplm:: ([f8172b4](https://github.com/jomiq/gpx2artdata/commit/f8172b4e4fc5965b889a4a937262c99dca467f39) by jomik).
+
+### Changed
+
+- change: read to "Publik kommentar" from "comment field" ([bfc43e6](https://github.com/jomiq/gpx2artdata/commit/bfc43e6d1b678331390b65791a68e6ad8b3ad062) by jomik).
+
+## [v2.1.1](https://github.com/jomiq/gpx2artdata/releases/tag/v2.1.1) - 2024-07-02
+
+<small>[Compare with v2.1.0](https://github.com/jomiq/gpx2artdata/compare/v2.1.0...v2.1.1)</small>
 
 ### Changed
 

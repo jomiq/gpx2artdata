@@ -1,3 +1,7 @@
+# Version v2.1.2 - 2024-07-08T17:45:28 CEST
+- Read comment field from gpx
+- Removed some debug statements...
+
 # Version v2.1.1 - 2024-07-02T17:29:08 CEST
 - small detail: video should not loop
 

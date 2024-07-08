@@ -1,8 +1,8 @@
-# v2.1.1
+# v2.1.2
 annotated-types==0.7.0
 anyio==4.4.0
 appdirs==1.4.4
-certifi==2024.6.2
+certifi==2024.7.4
 cffi==1.16.0
 cfgv==3.4.0
 click==8.1.7
@@ -14,7 +14,7 @@ fastapi==0.111.0
 fastapi-cli==0.0.4
 filelock==3.15.4
 git-changelog==2.5.2
--e git+https://github.com/jomiq/gpx2artdata.git@6906df7cc8cdd8b4bcb0566ab29590efd6d85bd0#egg=gpx2artdata
+-e git+https://github.com/jomiq/gpx2artdata.git@f8172b4e4fc5965b889a4a937262c99dca467f39#egg=gpx2artdata
 gpxpy==1.6.2
 h11==0.14.0
 hatch==1.12.0
@@ -23,7 +23,7 @@ httpcore==1.0.5
 httptools==0.6.1
 httpx==0.27.0
 hyperlink==21.0.0
-identify==2.5.36
+identify==2.6.0
 idna==3.7
 iniconfig==2.0.0
 jaraco.classes==3.4.0
@@ -38,7 +38,7 @@ MarkupSafe==2.1.5
 mdurl==0.1.2
 more-itertools==10.3.0
 nodeenv==1.9.1
-orjson==3.10.5
+orjson==3.10.6
 packaging==24.1
 pathspec==0.12.1
 pexpect==4.9.0
@@ -47,15 +47,15 @@ pluggy==1.5.0
 pre-commit==3.7.1
 ptyprocess==0.7.0
 pycparser==2.22
-pydantic==2.8.0
-pydantic_core==2.20.0
+pydantic==2.8.2
+pydantic_core==2.20.1
 Pygments==2.18.0
 pytest==8.2.2
 python-dotenv==1.0.1
 python-multipart==0.0.9
 PyYAML==6.0.1
 rich==13.7.1
-ruff==0.5.0
+ruff==0.5.1
 SecretStorage==3.3.3
 semver==3.0.2
 shellingham==1.5.4
@@ -63,12 +63,12 @@ sniffio==1.3.1
 starlette==0.37.2
 tomli_w==1.0.0
 tomlkit==0.12.5
-trove-classifiers==2024.5.22
+trove-classifiers==2024.7.2
 typer==0.12.3
 typing_extensions==4.12.2
 ujson==5.10.0
 userpath==1.9.2
-uv==0.2.18
+uv==0.2.22
 uvicorn==0.30.1
 uvloop==0.19.0
 virtualenv==20.26.3
