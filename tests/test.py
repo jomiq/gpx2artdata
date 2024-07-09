@@ -1,4 +1,4 @@
-from gpx2artdata import do_convert
+from gpx2artdata import default_convert
 
 f = open("example.gpx")
-do_convert(f)
+default_convert(f)
