@@ -18,7 +18,7 @@ BUILD_VERSION = (
 
 if PRODUCTION:
     PROTOCOL = "https"
-    app = fastapi.FastAPI(docs_url=None, redoc_url=None)
+    app = fastapi.FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
 else:
     app = fastapi.FastAPI()
 
