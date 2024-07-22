@@ -14,7 +14,7 @@ echo
 if [ -z "$(git status --untracked-files=no --porcelain)" ]; then
     hatch version $BUMP
     VERSION="v$(hatch version)"
-    git-changelog
+    git-changelog -B $VERSION
     
     echo "# $VERSION" > requirements.txt
     pip freeze >> requirements.txt
