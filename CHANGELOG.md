@@ -6,9 +6,25 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 <!-- insertion marker -->
-## [v2.2.0](https://github.com/jomiq/gpx2artdata/releases/tag/v2.2.0) - 2024-07-08
+## [v2.1.3](https://github.com/jomiq/gpx2artdata/releases/tag/v2.1.3) - 2024-07-22
 
-<small>[Compare with v2.1.1](https://github.com/jomiq/gpx2artdata/compare/v2.1.1...v2.2.0)</small>
+<small>[Compare with v2.1.2](https://github.com/jomiq/gpx2artdata/compare/v2.1.2...v2.1.3)</small>
+
+### Added
+
+- Added note about comments ([cce0695](https://github.com/jomiq/gpx2artdata/commit/cce0695ca97548cfaf70b0356ca776a0b4a3e666) by Jon Mihkkal Inga).
+
+### Fixed
+
+- fix: use explicit version for changelog ([194fe98](https://github.com/jomiq/gpx2artdata/commit/194fe98fd98d1612420bc58f550aa2e861f89a92) by Jon Mihkkal Inga).
+
+### Changed
+
+- change: moved indicators ([a1b6c3a](https://github.com/jomiq/gpx2artdata/commit/a1b6c3ab7b49da4f224524f91e0a4a9670d2ac71) by Jon Mihkkal Inga).
+
+## [v2.1.2](https://github.com/jomiq/gpx2artdata/releases/tag/v2.1.2) - 2024-07-08
+
+<small>[Compare with v2.1.1](https://github.com/jomiq/gpx2artdata/compare/v2.1.1...v2.1.2)</small>
 
 ### Fixed
 

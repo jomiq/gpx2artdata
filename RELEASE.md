@@ -1,3 +1,7 @@
+# Version v2.1.3 - Mon Jul 22 03:54:02 PM CEST 2024
+- Added info about comment field usage
+- Messed around with the loading symbols
+
 # Version v2.1.2 - 2024-07-08T17:45:28 CEST
 - Read comment field from gpx
 - Removed some debug statements...
