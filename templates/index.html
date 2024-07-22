@@ -44,7 +44,7 @@
           <p>Konvertera GPX-filer till ett format som bara artdata begriper</p>
         </div>
       <article>
-        <form hx-encoding='multipart/form-data' hx-post='/' hx-target="#result", hx-swap="innerHTML swap:1s", hx-indicator="#converting">
+        <form hx-encoding='multipart/form-data' hx-post='/' hx-target="#result", hx-swap="innerHTML swap:1s", hx-indicator=".htmx-indicator">
           <h2>1. Välj en fil och fyll i lokalnamn: </h2>
           <span><i class="fa fa-file-code-o"></i>  .gpx</span>
           <input type="file" id="file" name="file" accept=".gpx,application/gpx,application/gpx+xml" required placeholder="Välj en GPX-fil"/>
@@ -52,11 +52,12 @@
           <input type="text" id="locale" name="locale" placeholder="Lokalnamn" required/>
           <span><i class="fa fa-bullseye"></i>  Noggrannhet (m)</span>
           <input type="number" id="accuracy" value="1" name="accuracy" placeholder="Noggrannhet (m)" required/>
-          <h2>2. <i class="fa fa-hand-o-right"></i>  <button class="big-friendly" role="submit">Konvertera!  <i class="fa fa-motorcycle"></i></button>  <span id="converting" class="htmx-indicator" aria-busy="true"></span></h2>
+          <h2>2. <i class="fa fa-hand-o-right"></i>  <button class="big-friendly" role="submit">Konvertera!  <i class="fa fa-motorcycle"></i></button>  </h2>
+          <h2 class="htmx-indicator" aria-busy="true"></h2>
           </form>
           <div class="info-footer"><i href="#convert-help" class="fa fa-question-circle-o" data-target="help-modal" onclick="toggleModal(event)"></i></div>
       </article>
-      
+      <h1 class="htmx-indicator" aria-busy="true"></h1>
       <div id="result">
         {% include "result.html" %}
       </div>
