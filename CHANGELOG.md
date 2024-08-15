@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 <!-- insertion marker -->
+## [v2.2.0](https://github.com/jomiq/gpx2artdata/releases/tag/v2.2.0) - 2024-08-15
+
+<small>[Compare with v2.1.3](https://github.com/jomiq/gpx2artdata/compare/v2.1.3...v2.2.0)</small>
+
+### Fixed
+
+- fix Avenza does not use the comment field ([44916a7](https://github.com/jomiq/gpx2artdata/commit/44916a7b6171cf9cb76674f6bd4f5694905d1885) by Jon Mihkkal Inga).
+
 ## [v2.1.3](https://github.com/jomiq/gpx2artdata/releases/tag/v2.1.3) - 2024-07-22
 
 <small>[Compare with v2.1.2](https://github.com/jomiq/gpx2artdata/compare/v2.1.2...v2.1.3)</small>

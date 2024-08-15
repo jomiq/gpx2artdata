@@ -1,3 +1,6 @@
+# Version v2.2.0 - Thu Aug 15 08:02:51 PM CEST 2024
+- Read "Publik kommentar" from `description` field
+
 # Version v2.1.3 - Mon Jul 22 03:54:02 PM CEST 2024
 - Added info about comment field usage
 - Messed around with the loading symbols
