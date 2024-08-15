@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 <!-- insertion marker -->
+## [v2.2.1](https://github.com/jomiq/gpx2artdata/releases/tag/v2.2.1) - 2024-08-15
+
+<small>[Compare with v2.2.0](https://github.com/jomiq/gpx2artdata/compare/v2.2.0...v2.2.1)</small>
+
 ## [v2.2.0](https://github.com/jomiq/gpx2artdata/releases/tag/v2.2.0) - 2024-08-15
 
 <small>[Compare with v2.1.3](https://github.com/jomiq/gpx2artdata/compare/v2.1.3...v2.2.0)</small>

@@ -1,3 +1,6 @@
+# Version v2.2.1 - Thu Aug 15 08:21:52 PM CEST 2024
+- Fix some dependency issues with the `[server]` target
+
 # Version v2.2.0 - Thu Aug 15 08:02:51 PM CEST 2024
 - Read "Publik kommentar" from `description` field
 
