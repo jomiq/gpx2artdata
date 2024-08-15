@@ -27,7 +27,7 @@ classifiers = [
 dependencies = ["gpxpy", "lxml"]
 
 [project.optional-dependencies]
-server = ["fastapi", "gpxpy", "jinja2"]
+server = ["fastapi", "gpxpy", "jinja2", "uvicorn", "python-multipart"]
 dev = ["gpx2artdata[server]", "ruff", "pytest", "pre-commit", "hatch", "git-changelog"]
 build = ["pillow", "moviepy", "joblib"]
 
