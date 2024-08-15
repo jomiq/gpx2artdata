@@ -20,6 +20,9 @@ def do_convert(file: IO, locale: str = "", accuracy: int = 1) -> dict:
     gpx = gpxpy.parse(file)
     res = {"headings": COLMAP, "rows": [], "n_rows": len(gpx.waypoints)}
     for wp in gpx.waypoints:
+        comment = str(wp.description).split("Description:")[-1] + str(
+            wp.comment if wp.comment else ""
+        )
         data = {
             "species": wp.name,
             "locale": locale,
@@ -27,7 +30,7 @@ def do_convert(file: IO, locale: str = "", accuracy: int = 1) -> dict:
             "lon": wp.longitude,
             "lat": wp.latitude,
             "date": str(wp.time.date().isoformat()),
-            "comment": str(wp.comment) if wp.comment else "",
+            "comment": comment,
         }
         res["rows"].append(data)
 
