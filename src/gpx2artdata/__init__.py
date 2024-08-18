@@ -19,10 +19,19 @@ COLMAP = [
 def do_convert(file: IO, locale: str = "", accuracy: int = 1) -> dict:
     gpx = gpxpy.parse(file)
     res = {"headings": COLMAP, "rows": [], "n_rows": len(gpx.waypoints)}
+
+    if gpx.creator.startswith("Avenza Maps"):
+
+        def get_comment(wp) -> str:
+            return str(getattr(wp, "description", "")).split("Description:")[-1]
+
+    else:
+
+        def get_comment(wp) -> str:
+            return str(getattr(wp, "comment", ""))
+
     for wp in gpx.waypoints:
-        comment = str(wp.description).split("Description:")[-1] + str(
-            wp.comment if wp.comment else ""
-        )
+        comment = get_comment(wp)
         data = {
             "species": wp.name,
             "locale": locale,
