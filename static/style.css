@@ -69,7 +69,8 @@ footer {
   text-align: right;
 }
 
-td input:not([type="checkbox"], [type="radio"]) {
+td input:not([type="checkbox"], [type="radio"]),
+th input:not([type="checkbox"], [type="radio"]) {
   border: none;
   display: inline;
   background-color: transparent;
@@ -103,7 +104,7 @@ input.date {
 }
 
 input.comment {
-  min-width: 8rem;
+  min-width: 10rem;
 }
 
 .hidden {

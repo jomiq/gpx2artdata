@@ -42,7 +42,7 @@
         <tr>
           <th class="unselectable control" style="text-align: center"><i class="fa fa-eye"></i></th>
           {% for heading in headings %}
-          <th>{{ heading }}</th>
+          <th><input value="{{ heading }}"></th>
           {% endfor %}
           <th class="unselectable control"><input style="opacity: 0%;" type="checkbox" role="switch"/></td>
         </tr>
