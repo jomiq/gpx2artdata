@@ -2,10 +2,10 @@ COPY_SUCCESS_INNERHTML =
   '<span class="rows-selected"></span> kopierade!  <i class="fa fa-copy">';
 
 function get_table_heading_text(el) {
-  const cells = document.querySelectorAll("#data thead tr th:not(.control)");
+  const cells = document.querySelectorAll("#data thead tr th:not(.control) input");
   var res = [];
   cells.forEach((c) => {
-    res.push(c.innerHTML);
+    res.push(c.value);
   });
   return res.join("\t");
 }
