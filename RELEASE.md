@@ -1,3 +1,6 @@
+# Version v2.3.0 - Thu Sep 12 12:03:17 PM CEST 2024
+- Table headings are now editable. This is intended as a transparent advanced feature and will not be documented.
+
 # Version v2.2.1 - Thu Aug 15 08:21:52 PM CEST 2024
 - Fix some dependency issues with the `[server]` target
 
