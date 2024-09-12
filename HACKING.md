@@ -15,7 +15,7 @@ A simple tool for converting `.gpx` files to text for upload to [artportalen.se]
 * [Fontawesome icons](https://docs.fontawesome.com/web) - the path of least resistance
 
 ### Deployment
-This repo builds a docker image that is manually deployed on Google Cloud compute. 
+This repo builds a docker image that is manually deployed on Google Cloud Run. 
 
 
 ## Table of Contents
